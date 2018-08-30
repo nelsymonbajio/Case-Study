@@ -1,0 +1,121 @@
+@charset "ISO-8859-1";
+
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+}
+
+nav {
+	width: 100%;
+	background: #02075d;
+}
+
+ul {
+	width: 80%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+ul li {
+	list-style: none;
+	display: inline-block;
+	padding: 20px;
+	background: #02075d;
+	border: none;
+}
+
+ul li:hover {
+	background: #D1A6A6;
+}
+
+ul li a {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.table-wrapper {
+	margin: 0;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table th {
+	text-align: center;
+	background-color: #3a6070;
+	color: #FFF;
+	padding: 4px 30px 4px 8px;
+}
+
+table td {
+	border: 1px solid #e3e3e3;
+	padding: 4px 8px;
+}
+
+table tr:nth-child(odd) td {
+	background-color: #e7edf0;
+}
+
+.register {
+	width: 400px !important;
+}
+
+.btn-add {
+	color: #FFF;
+	background-color: #28a745;
+	border-color: #28a745;
+	display: block;
+	text-decoration: none;
+	padding: 6px 6px 6px 6px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #CCCCCC;
+}
+
+.btn-update {
+	color: #212529; background-color : #ffc107; border-color : #ffc107;
+	display: block;
+	text-decoration: none;
+	padding: 6px 6px 6px 6px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #CCCCCC;
+	background-color: #ffc107;
+	border-color: #ffc107;
+}
+
+.btn-delete {
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
+	display: block;
+	text-decoration: none;
+	padding: 6px 6px 6px 6px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #CCCCCC;
+}
+
+.align-form {
+	display: block;
+	width: 100%;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form1 {
+	margin-bottom: 1rem;
+}
