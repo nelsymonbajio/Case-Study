@@ -10,7 +10,7 @@ public abstract class DbConnection
 	private String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 	private String DB_CONNECTION = "jdbc:mysql://localhost:3306/casestudy";
 	private String DB_USER = "root";
-	private String DB_PASSWORD = "";
+	private String DB_PASSWORD = "admin";
 	
 	public DbConnection() {
 		try {

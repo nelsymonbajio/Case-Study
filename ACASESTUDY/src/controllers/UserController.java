@@ -21,7 +21,6 @@ public class UserController extends HttpServlet {
 			{	
 				request.setAttribute("usersList", userServ.retrieveAllUsers());
 				request.getRequestDispatcher("/Users.jsp").forward(request, response);
-
 			}
 			else if(request.getRequestURI().equals("/ACASESTUDY/Users/AddUserForm"))
 			{
@@ -68,7 +67,7 @@ public class UserController extends HttpServlet {
 					System.out.println("Change password successful");
 					response.sendRedirect("/ACASESTUDY/Users/");
 				}else {
-					System.out.println("error");
+					System.out.println("Old Password Incorrect");
 				}
 				
 			}

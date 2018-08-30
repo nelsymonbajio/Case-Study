@@ -119,3 +119,13 @@ table tr:nth-child(odd) td {
 .form1 {
 	margin-bottom: 1rem;
 }
+.wrap{
+	width:80%;
+	margin: 0 auto;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}

@@ -19,7 +19,6 @@ public class ProductController extends HttpServlet {
 		
 		if(request.getSession().getAttribute("username")!=null)
 		{
-			System.out.println(request.getRequestURI());
 			if(request.getRequestURI().equals("/ACASESTUDY/Products/"))
 			{	
 				//request.setAttribute("prodList", prodServ.retrieveAllProducts());
@@ -27,7 +26,8 @@ public class ProductController extends HttpServlet {
 			}
 		}
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 	}
 
 }
