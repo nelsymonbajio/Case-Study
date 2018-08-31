@@ -8,14 +8,11 @@
 	<title>Products Page</title>
 </head>
 <body>
-<nav>
-	<ul>
-		<li><a href="/ACASESTUDY/AdminMain.jsp">HOME</a></li>
-		<li><a href="/ACASESTUDY/Products/">PRODUCTS</a></li>
-		<li><a href="/ACASESTUDY/Users/">USERS</a></li>
-		<li><a href="Profile.jsp">PROFILE</a></li>
-		<li><a href="/ACASESTUDY/Login/Logout">LOGOUT</a></li>
-	</ul>
-	</nav>
+	<jsp:include page="mainHeader.jsp"/>
+	<%-- <h1>${sessionScope.accessLevel}</h1> --%>
+	<div class="page-banner">
+		<h1>PRODUCTS</h1>
+	</div>
+
 </body>
 </html>

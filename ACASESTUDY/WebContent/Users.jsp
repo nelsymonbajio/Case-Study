@@ -8,16 +8,9 @@
 	<link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css">
 	<title>Users</title>
 </head>
+
 <body>
-	<nav>
-	<ul>
-		<li><a href="/ACASESTUDY/AdminMain.jsp">HOME</a></li>
-		<li><a href="/ACASESTUDY/Products/">PRODUCTS</a></li>
-		<li><a href="/ACASESTUDY/Users/">USERS</a></li>
-		<li><a href="Profile.jsp">PROFILE</a></li>
-		<li><a href="/ACASESTUDY/Login/Logout">LOGOUT</a></li>
-	</ul>
-	</nav>
+	<jsp:include page="mainHeader.jsp"/>
 	<div style="width:800px; margin:0 auto;">
 		<div>
 			<div><h2>USERS</h2></div>

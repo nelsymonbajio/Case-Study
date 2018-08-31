@@ -11,12 +11,12 @@ public class UserDAO extends DbConnection
 	private Statement stmt;
 	private ResultSet rs;
 	private PreparedStatement ps;
-	
+
 	public boolean createUser(User user)
 	{
-		String query="INSERT INTO users(userid,username,password,firstname,middlename,lastname,role)"
+		String query="INSERT INTO users(userid,username,password,firstname,middlename,lastname,role,createPriv,deletePriv,updatePriv)"
 				+ "VALUES ('"+user.getUserid()+"', '"+user.getUsername()+"','123','"+user.getFirstname()+"','"+user.getMiddlename()+"'"
-						+ ",'"+user.getLastname()+"','"+user.getRole()+"')";
+				+ ",'"+user.getLastname()+"','"+user.getRole()+"','"+(user.isCanCreate()? 1 : 0)+"','"+(user.isCanDelete()? 1 : 0)+"','"+(user.isCanUpdate()? 1 : 0)+"')";
 		try {
 			stmt=con.createStatement();
 			stmt.executeUpdate(query);
@@ -55,6 +55,9 @@ public class UserDAO extends DbConnection
 				user1.setMiddlename(rs.getString("middlename"));
 				user1.setLastname(rs.getString("lastname"));
 				user1.setRole(rs.getString("role"));
+				user1.setCanCreate(rs.getBoolean("createPriv"));
+				user1.setCanUpdate(rs.getBoolean("updatePriv"));
+				user1.setCanDelete(rs.getBoolean("deletePriv"));
 				user.add(user1);
 			}
 			rs.close();
@@ -64,10 +67,28 @@ public class UserDAO extends DbConnection
 		}
 		return user;
 	}
-	public boolean updateUser(String id,String userid,String username,String firstname,String middlename,String lastname,String role)
+	public boolean updateUser(String id,String userid,String username,String firstname,String middlename,String lastname,String role,
+			String create,String update,String delete)
 	{
+		int c=0, u=0, d=0;
+		
+		if(role.equalsIgnoreCase("admin"))
+		{
+			c=1;
+			u=1;
+			d=1;
+		}else {
+			if(create!=null)
+				c=1;
+			if(update!=null)
+				u=1;
+			if(delete!=null)
+				d=1;
+		}
+
+
 		String query="UPDATE users SET userid='"+userid+"', username='"+username+"', firstname='"+firstname+"'"
-				+ ", middlename='"+middlename+"', lastname='"+lastname+"',role='"+role+"' WHERE id="+id+"";
+				+ ", middlename='"+middlename+"', lastname='"+lastname+"',role='"+role+"',createPriv="+c+", updatePriv="+u+",deletePriv="+d+" WHERE id="+id+"";
 		try {
 			stmt=con.createStatement();
 			stmt.executeUpdate(query);
@@ -81,7 +102,7 @@ public class UserDAO extends DbConnection
 	{
 		String query1 = "SELECT * FROM users WHERE userid='"+userid+"'and password='"+oldpass+"'";
 		String query2 = "UPDATE users SET password='"+newpass+"' WHERE userid="+userid+"";
-		
+
 		try {
 			ps=con.prepareStatement(query1);
 			rs=ps.executeQuery();
@@ -117,7 +138,7 @@ public class UserDAO extends DbConnection
 		ArrayList<User> users = new ArrayList<User>();
 		String query="SELECT * FROM users ORDER BY id DESC";
 		try {
-			
+
 			ps=con.prepareStatement(query);
 			rs=ps.executeQuery();
 			while(rs.next())
@@ -130,6 +151,9 @@ public class UserDAO extends DbConnection
 				user.setMiddlename(rs.getString("middlename"));
 				user.setLastname(rs.getString("lastname"));
 				user.setRole(rs.getString("role"));
+				user.setCanCreate(rs.getBoolean("createPriv"));
+				user.setCanUpdate(rs.getBoolean("updatePriv"));
+				user.setCanDelete(rs.getBoolean("deletePriv"));
 				users.add(user);
 			}
 			rs.close();
@@ -138,6 +162,6 @@ public class UserDAO extends DbConnection
 			e.printStackTrace();
 		}
 		return users;
-		
+
 	}
 }

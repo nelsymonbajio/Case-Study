@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Date;
+
 public class Product 
 {
 	private String prodid;
@@ -8,8 +10,21 @@ public class Product
 	private double price;
 	private int qty;
 	private String productType;
-	private String brandName;
+	private Date arrivalDate;
+	private Date expiryDate;
 	
+	public Date getArrivalDate() {
+		return arrivalDate;
+	}
+	public void setArrivalDate(Date arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
+	public Date getExpiryDate() {
+		return expiryDate;
+	}
+	public void setExpiryDate(Date expiryDate) {
+		this.expiryDate = expiryDate;
+	}
 	public int getQty() {
 		return qty;
 	}
@@ -39,12 +54,6 @@ public class Product
 	}
 	public void setProdCode(String prodCode) {
 		this.prodCode = prodCode;
-	}
-	public String getBrandName() {
-		return brandName;
-	}
-	public void setBrandName(String brandName) {
-		this.brandName = brandName;
 	}
 	public String getProdid() {
 		return prodid;

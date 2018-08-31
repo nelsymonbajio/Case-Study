@@ -10,7 +10,28 @@ public class User {
 	private String middlename;
 	private String lastname;
 	private String role;
+	private boolean canCreate = false;
+	private boolean canDelete = false;
+	private boolean canUpdate = false;
 	
+	public boolean isCanCreate() {
+		return canCreate;
+	}
+	public void setCanCreate(boolean canCreate) {
+		this.canCreate = canCreate;
+	}
+	public boolean isCanUpdate() {
+		return canUpdate;
+	}
+	public void setCanUpdate(boolean canUpdate) {
+		this.canUpdate = canUpdate;
+	}
+	public boolean isCanDelete() {
+		return canDelete;
+	}
+	public void setCanDelete(boolean canDelete) {
+		this.canDelete = canDelete;
+	}
 	public int getId() {
 		return id;
 	}

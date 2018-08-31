@@ -29,7 +29,6 @@ public class ProductDAO extends DbConnection{
 				prod1.setProdid(rs.getString("id"));
 				prod1.setProdCode(rs.getString("prodcode"));
 				prod1.setName(rs.getString("prodname"));
-				prod1.setBrandName(rs.getString("prodbrand"));
 				prod1.setProductType(rs.getString("producttype"));
 				prod1.setQty(rs.getInt("qty"));
 				prod1.setPrice(rs.getDouble("price"));

@@ -20,7 +20,7 @@ public class LoginController extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-    	//Logout add destroy session
+    	//Logout Request
 		if(request.getRequestURI().equals("/ACASESTUDY/Login/Logout"))
 		{
 			request.getSession().invalidate();
@@ -33,6 +33,7 @@ public class LoginController extends HttpServlet {
 		logserv.login(request.getParameter("username"), request.getParameter("password"));
 		session = request.getSession();
 		
+		//Login Request
 		if(request.getRequestURI().equals("/ACASESTUDY/Login"))
 		{
 			if(logserv.isUserExists()&&logserv.isAdmin())

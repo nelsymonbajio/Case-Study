@@ -37,27 +37,60 @@
 					<label>Last name</label>
 					<input type="text" class="align-form" name="lastname" required value="${userInfo[0].lastname}">
 				</div>
-				<div class="form1">
+				
 				<c:choose>
-				  <c:when test="${userInfo[0].role=='admin'}">
-				    <label>Account Role</label>
-					<select name="role">
-						<option value="Admin" selected>Admin</option>
-						<option value="User">User</option>
-					</select>
-				  </c:when>
-				  <c:otherwise>
-					<label>Account Role</label>
-					<select name="role">
-						<option value="Admin">Admin</option>
-						<option value="User" selected>User</option>
-					</select>
-				  </c:otherwise>
+					<c:when test="${userInfo[0].role=='Admin'}">
+					</c:when>
+					<c:otherwise>
+						<div class="form1">
+							<c:choose>
+								<c:when test="${userInfo[0].canCreate==true}">
+									<input type="checkbox" name="Create" value="Create" checked="checked">Create
+								</c:when>
+								<c:otherwise>
+									<input type="checkbox" name="Create" value="Create">Create
+								</c:otherwise>
+							</c:choose> 
+							<c:choose>
+								<c:when test="${userInfo[0].canUpdate==true}">
+									<input type="checkbox" name="Update" value="Update" checked="checked">Update
+								</c:when>
+								<c:otherwise>
+									<input type="checkbox" name="Update" value="Create">Update
+								</c:otherwise>
+							</c:choose> 
+							<c:choose>
+								<c:when test="${userInfo[0].canDelete==true}">
+									<input type="checkbox" name="Delete" value="Delete" checked="checked">Delete
+								</c:when>
+								<c:otherwise>
+									<input type="checkbox" name="Delete" value="Delete">Delete
+								</c:otherwise>
+							</c:choose> 
+						</div>
+					</c:otherwise>
 				</c:choose>
+				<div class="form1">
+					<c:choose>
+					  <c:when test="${userInfo[0].role=='Admin'}">
+					    <label>Account Role</label>
+						<select name="role">
+							<option value="Admin" selected>Admin</option>
+							<option value="User">User</option>
+						</select>
+					  </c:when>
+					  <c:otherwise>
+						<label>Account Role</label>
+						<select name="role">
+							<option value="Admin">Admin</option>
+							<option value="User" selected>User</option>
+						</select>
+					  </c:otherwise>
+					</c:choose>
 				</div>
 				<div class="form1">
 					<input class="btn-add" type="submit" name="UpdateUser" value="UPDATE">
-					<a href="/ACASESTUDY/Users/" class="btn-delete">CANCEL</a>
+					<a href="/ACASESTUDY/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
 				</div>
 				
 			</form>
@@ -84,7 +117,7 @@
 				<div class="form1">
 					<input type="hidden" name="userID" value="${userInfo[0].userid}">
 					<input class="btn-add" type="submit" name="ChangePassUser" value="Change Password" required onkeyup='check();'>
-					<a href="/ACASESTUDY/Users/" class="btn-delete">CANCEL</a>
+					<a href="/ACASESTUDY/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
 				</div>
 			</form>
 		</div>

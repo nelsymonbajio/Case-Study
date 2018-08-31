@@ -2,15 +2,15 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Create User</title>
-		<link href="${pageContext.request.contextPath}/css/main.css" type="text/css" rel="stylesheet">
-	</head>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Add Product</title>
+	<link href="${pageContext.request.contextPath}/css/main.css" type="text/css" rel="stylesheet">
+</head>
 <body>
 	<div class="register" style="margin: 0 auto;">
 		<div class="container">
-			<h1 align="center">REGISTRATION</h1>
+			<h1 align="center">New Product</h1>
 			<br>
 		</div>
 		<form action="Users/RegisterUser" method="POST">
