@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Add Product</title>
+	<title>New Product</title>
 	<link href="${pageContext.request.contextPath}/css/main.css" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -13,7 +13,7 @@
 			<h1 align="center">New Product</h1>
 			<br>
 		</div>
-		<form action="Users/RegisterUser" method="POST">
+		<form action="Products/AddProduct" method="POST">
 			<div class="form1">
 				<label for="userid">User ID</label>
 				<input type="number" class="align-form" name="userid" required placeholder="Type Userid">
