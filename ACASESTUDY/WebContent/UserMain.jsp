@@ -8,15 +8,7 @@
 		<link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css">
 	</head>
 <body>
-	<nav>
-		<ul>
-			<li><a href="/ACASESTUDY/UserMain.jsp">HOME</a></li>
-			<li><a href="Products.jsp">PRODUCTS</a></li>
-			<li><a href="Profile.jsp">PROFILE</a></li>
-			<li><a href="/ACASESTUDY/Login/Logout">LOGOUT</a></li>
-		</ul>
-	</nav>
-	
+	<jsp:include page="userHeader.jsp" />
 	<h1 align="center">WELCOME</h1>
 </body>
 </html>

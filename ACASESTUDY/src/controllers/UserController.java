@@ -16,7 +16,7 @@ public class UserController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(request.getSession().getAttribute("username")!=null)
+		if(request.getSession().getAttribute("username")!=null&&request.getSession().getAttribute("accessLevel").equals("admin"))
 		{
 			//Retrieve All Users
 			if(request.getRequestURI().equals("/ACASESTUDY/Users/"))
@@ -32,7 +32,8 @@ public class UserController extends HttpServlet {
 			//Delete User Request
 			else if(request.getRequestURI().equals("/ACASESTUDY/Users/DeleteUser"))
 			{
-				if(userServ.deleteUser(request.getParameter("u"))){
+				if(userServ.deleteUser(request.getParameter("u")))
+				{
 					System.out.println("delete successful");
 					response.sendRedirect("/ACASESTUDY/Users/");
 				}
@@ -44,7 +45,18 @@ public class UserController extends HttpServlet {
 				request.getRequestDispatcher("/UpdateUserForm.jsp").forward(request, response);
 			}
 		}
-		else {
+		else if(request.getSession().getAttribute("username")!=null&&request.getSession().getAttribute("accessLevel").equals("user")) 
+		{
+			//Direct access thru URL with user accesslevel will redirect to mainpage of user
+			if(request.getRequestURI().equals("/ACASESTUDY/Users/DeleteUser")||
+					request.getRequestURI().equals("/ACASESTUDY/Users/")) 
+			{
+				response.sendRedirect("/ACASESTUDY/UserMain.jsp");
+			}
+		}
+		else 
+		{
+			System.out.println("no session");
 			response.sendRedirect("/ACASESTUDY/Login.jsp");
 		}
 	}

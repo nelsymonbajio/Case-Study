@@ -15,39 +15,34 @@
 		</div>
 		<form action="Products/AddProduct" method="POST">
 			<div class="form1">
-				<label for="userid">User ID</label>
-				<input type="number" class="align-form" name="userid" required placeholder="Type Userid">
+				<label for=prodcode>Product Code</label>
+				<input type="text" class="align-form" name="prodcode" required placeholder="Type Product Code">
 			</div>
 			<div class="form1">
-				<label for="username">Username</label>
-				<input type="text" class="align-form" name="username" required placeholder="Type Username">
+				<label for="prodname">Product Name</label>
+				<input type="text" class="align-form" name="prodname" required placeholder="Type Product Name">
 			</div>
 			<div class="form1">
-				<label>First name</label>
-				<input type="text" class="align-form" name="firstname" required placeholder="Type Firstname">
+				<label for="quantity">Quantity</label>
+				<input type="number" class="align-form" name="quantity" required placeholder="Type Quantity">
 			</div>
 			<div class="form1">
-				<label>Middle name</label>
-				<input type="text" class="align-form" name="middlename" required placeholder="Type Middlename">
+				<label for="price">Price</label>
+				<input type="number" class="align-form" name="price" required placeholder="Type Price">
 			</div>
 			<div class="form1">
-				<label>Last name</label>
-				<input type="text" class="align-form" name="lastname" required placeholder="Type Lastname">
-			</div>
-			<div class="form1">
-				<input type="checkbox" name="Create" value="Create">Create
-				<input type="checkbox" name="Update" value="Update">Update 
-				<input type="checkbox" name="Delete" value="Delete">Delete<br>
-			</div>
-			<div class="form1">
-			<label>Account Role</label>
-				<select name="role">
-					<option value="Admin">Admin</option>
-					<option value="User">User</option>
+				<label>Product Type</label>
+				<select name="productType">
+					<option value="Perishable">Perishable</option>
+					<option value="Non Perishable">Non Perishable</option>
 				</select>
 			</div>
-			<input class="btn-add" type="submit" name="AddUser" value="REGISTER">
-			<a href="/ACASESTUDY/Users/" class="btn-delete">CANCEL</a>
+			<div class="form1">
+				<label>Expiration Date</label>
+				<input type="date" name="expiryDate">
+			</div>
+			<input class="btn-add" type="submit" name="AddProduct" value="SUBMIT">
+			<a href="/ACASESTUDY/Products/" class="btn-delete">CANCEL</a>
 		</form>
 	</div>
 </body>
