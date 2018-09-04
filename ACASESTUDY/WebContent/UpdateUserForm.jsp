@@ -37,12 +37,29 @@
 					<label>Last name</label>
 					<input type="text" class="align-form" name="lastname" required value="${userInfo[0].lastname}">
 				</div>
-				
-				<c:choose>
-					<c:when test="${userInfo[0].role=='Admin'}">
-					</c:when>
-					<c:otherwise>
-						<div class="form1">
+				<div class="form1">
+					<c:choose>
+					  <c:when test="${userInfo[0].role=='Admin'}">
+					    <label>Account Role</label>
+						<select name="role">
+							<option value="Admin" selected>Admin</option>
+							<option value="User">User</option>
+						</select>
+					  </c:when>
+					  <c:otherwise>
+						<label>Account Role</label>
+						<select name="role">
+							<option value="Admin">Admin</option>
+							<option value="User" selected>User</option>
+						</select>
+					  </c:otherwise>
+					</c:choose>
+				</div>
+				<div class="form1">
+					<c:choose>
+						<c:when test="${userInfo[0].role=='Admin'}">
+						</c:when>
+						<c:otherwise>
 							<c:choose>
 								<c:when test="${userInfo[0].canCreate==true}">
 									<input type="checkbox" name="Create" value="Create" checked="checked">Create
@@ -67,32 +84,13 @@
 									<input type="checkbox" name="Delete" value="Delete">Delete
 								</c:otherwise>
 							</c:choose> 
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<div class="form1">
-					<c:choose>
-					  <c:when test="${userInfo[0].role=='Admin'}">
-					    <label>Account Role</label>
-						<select name="role">
-							<option value="Admin" selected>Admin</option>
-							<option value="User">User</option>
-						</select>
-					  </c:when>
-					  <c:otherwise>
-						<label>Account Role</label>
-						<select name="role">
-							<option value="Admin">Admin</option>
-							<option value="User" selected>User</option>
-						</select>
-					  </c:otherwise>
+						</c:otherwise>
 					</c:choose>
 				</div>
 				<div class="form1">
 					<input class="btn-add" type="submit" name="UpdateUser" value="UPDATE">
 					<a href="/ACASESTUDY/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
 				</div>
-				
 			</form>
 		</div>
 		<div class="register right">

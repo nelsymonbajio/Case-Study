@@ -23,7 +23,7 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
     	//Logout Request
-		if(request.getRequestURI().equals("/ACASESTUDY/Login/Logout"))
+		if(request.getRequestURI().equals(request.getContextPath()+"/Login/Logout"))
 		{
 			request.getSession().invalidate();
 			response.sendRedirect("/ACASESTUDY/Login.jsp");
@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet {
 		session = request.getSession();
 		
 		//Login Request
-		if(request.getRequestURI().equals("/ACASESTUDY/Login"))
+		if(request.getRequestURI().equals(request.getContextPath()+"/Login"))
 		{
 			if(logserv.isUserExists()&&logserv.isAdmin())
 			{

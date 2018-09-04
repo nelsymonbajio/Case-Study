@@ -23,13 +23,13 @@ public class LoginFilter implements Filter {
 
 		if(servletRequest.getSession().getAttribute("username")!=null&&servletRequest.getSession().getAttribute("accessLevel").equals("admin"))
 		{
-			if(servletRequest.getRequestURI().equals("/ACASESTUDY/Users.jsp"))
+			if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Users.jsp"))
 			{
-				servletResponse.sendRedirect("/ACASESTUDY/Users/");
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Users/");
 			}
-			else if(servletRequest.getRequestURI().equals("/ACASESTUDY/Products.jsp"))
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Products.jsp"))
 			{
-				servletResponse.sendRedirect("/ACASESTUDY/Products/");
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
 			}
 			else {
 				chain.doFilter(request, response);
@@ -38,27 +38,27 @@ public class LoginFilter implements Filter {
 		else if(servletRequest.getSession().getAttribute("username")!=null&&servletRequest.getSession().getAttribute("accessLevel").equals("user"))
 		{
 			//Filter Access to admin modules
-			if(servletRequest.getRequestURI().equals("/ACASESTUDY/Users.jsp")|| servletRequest.getRequestURI().equals("/ACASESTUDY/AddUserForm.jsp")
-					||servletRequest.getRequestURI().equals("/ACASESTUDY/UpdateUserForm.jsp")) 
+			if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Users.jsp")|| servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/AddUserForm.jsp")
+					||servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateUserForm.jsp")) 
 			{ 
-				servletResponse.sendRedirect("/ACASESTUDY/Products/");
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
 			}
 			//Filter 
-			else if(servletRequest.getRequestURI().equals("/ACASESTUDY/AddProductForm.jsp")&&Boolean.TRUE.equals(servletRequest.getSession().getAttribute("createPriv")))
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/AddProductForm.jsp")&&Boolean.TRUE.equals(servletRequest.getSession().getAttribute("createPriv")))
 			{	
 				chain.doFilter(request,response);
 			}
-			else if(servletRequest.getRequestURI().equals("/ACASESTUDY/AddProductForm.jsp")&&Boolean.FALSE.equals(servletRequest.getSession().getAttribute("createPriv")))
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/AddProductForm.jsp")&&Boolean.FALSE.equals(servletRequest.getSession().getAttribute("createPriv")))
 			{
-				servletResponse.sendRedirect("/ACASESTUDY/Products/");
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
 			}
-			else if(servletRequest.getRequestURI().equals("/ACASESTUDY/UpdateProductForm.jsp")&&Boolean.TRUE.equals(servletRequest.getSession().getAttribute("createPriv")))
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateProductForm.jsp")&&Boolean.TRUE.equals(servletRequest.getSession().getAttribute("createPriv")))
 			{
 				chain.doFilter(request,response);
 			}
-			else if(servletRequest.getRequestURI().equals("/ACASESTUDY/UpdateProductForm.jsp")&&Boolean.FALSE.equals(servletRequest.getSession().getAttribute("createPriv")))
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateProductForm.jsp")&&Boolean.FALSE.equals(servletRequest.getSession().getAttribute("createPriv")))
 			{
-				servletResponse.sendRedirect("/ACASESTUDY/Products/");
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
 			}
 			else {
 				chain.doFilter(request,response);
@@ -66,8 +66,8 @@ public class LoginFilter implements Filter {
 		}
 		else 
 		{
-			if(!servletRequest.getRequestURI().equals("/ACASESTUDY/Login.jsp")) {
-				servletResponse.sendRedirect("/ACASESTUDY/Login.jsp");
+			if(!servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Login.jsp")) {
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Login.jsp");
 			}else {
 				chain.doFilter(request, response);
 			}

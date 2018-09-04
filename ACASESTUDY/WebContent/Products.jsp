@@ -18,9 +18,62 @@
 			<jsp:include page="userHeader.jsp" />
 		</c:otherwise>
 	</c:choose>
-	<div class="page-banner">
-		<h1>PRODUCTS</h1>
+	
+	<div style="width:800px; margin:0 auto;">
+		<div>
+			<div>
+				<h2>PRODUCTS</h2>
+			</div>
+				<c:choose>
+					<c:when test="${sessionScope.createPriv==true}">
+						<div><a href="AddProductForm" class="btn-add" style="float:right;">ADD PRODUCT</a></div>
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose>
+		</div>
+		<br><br>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>ProdCode</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Expiration Date</th>
+				<th colspan="2">Action</th>
+			</tr>
+			<c:forEach var="p" items="${prodList}">
+			<tr>
+				<td>${p.prodid}</td>
+				<td>${p.prodCode}</td>
+				<td>${p.name}</td>
+				<td>${p.productType}</td>
+				<td>${p.qty}</td>
+				<td>${p.price}</td>
+				<td>${p.expiryDate}</td>
+				<c:choose>
+					<c:when test="${sessionScope.updatePriv==true}">
+						<td><a href="UpdateProductForm?p=${p.prodid}" class="btn-update">Update</a></td>
+					</c:when>
+					<c:otherwise>
+						<td></td>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${sessionScope.deletePriv==true}">
+						<td><a href="DeleteProduct?p=${p.prodid}" class="btn-delete">Delete</a></td>
+					</c:when>
+					<c:otherwise>
+						<td></td>
+					</c:otherwise>
+				</c:choose>
+				
+				
+			</tr>
+			</c:forEach>
+		</table>
 	</div>
-
 </body>
 </html>

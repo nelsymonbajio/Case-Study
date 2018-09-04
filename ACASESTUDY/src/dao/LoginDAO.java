@@ -4,16 +4,16 @@ import java.sql.*;
 
 public class LoginDAO extends DbConnection
 {
-	private Connection con = this.getConnection();
+	private Connection con;
 	private Statement stmt = null;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	
 	private boolean isAdmin = false;
 	private boolean userExists = false;
 	
 	public void searchUser(String username, String password)
 	{
+		con = super.getConnection();
 		String query="SELECT * FROM users WHERE username='"+username+"' AND password='"+password+"'";
 		
 		try {
@@ -29,6 +29,7 @@ public class LoginDAO extends DbConnection
 				}
 			}
 			rs.close();
+			super.closeConnection();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

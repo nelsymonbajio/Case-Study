@@ -35,20 +35,35 @@
 				<input type="text" class="align-form" name="lastname" required placeholder="Type Lastname">
 			</div>
 			<div class="form1">
-				<input type="checkbox" name="Create" value="Create">Create
-				<input type="checkbox" name="Update" value="Update">Update 
-				<input type="checkbox" name="Delete" value="Delete">Delete<br>
-			</div>
-			<div class="form1">
-			<label>Account Role</label>
-				<select name="role">
-					<option value="Admin">Admin</option>
+				<label>Account Role</label>
+				<select name="role" id="selectRole" onclick="priv()">
 					<option value="User">User</option>
+					<option value="Admin">Admin</option>
 				</select>
 			</div>
+			<div class="form1" id="privDiv">
+				<input type="checkbox" name="Create" value="Create" id="createPriv">Create
+				<input type="checkbox" name="Update" value="Update" id="updatePriv">Update 
+				<input type="checkbox" name="Delete" value="Delete" id="deletePriv">Delete<br>
+			</div>
+			
 			<input class="btn-add" type="submit" name="AddUser" value="REGISTER">
 			<a href="/ACASESTUDY/Users/" class="btn-delete">CANCEL</a>
 		</form>
 	</div>
+	<script type="text/javascript">
+		function priv()
+		{
+			var select = document.getElementById("selectRole");
+			var role = select.options[select.selectedIndex].value;
+			if(role == "Admin")
+			{
+				privDiv.style.display = "none"
+			}
+			else{
+				privDiv.style.display = "block";
+			}
+		}
+	</script>
 </body>
 </html>

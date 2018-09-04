@@ -1,4 +1,7 @@
 <nav>
+	<div class="nav-title" style="font-size: 20px; color: white;">
+		Product Managerment
+	</div>
 	<ul>
 		<li><a href="/ACASESTUDY/AdminMain.jsp">HOME</a></li>
 		<li><a href="/ACASESTUDY/Products/">PRODUCTS</a></li>

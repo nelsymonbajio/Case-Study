@@ -29,7 +29,7 @@ public class UserController extends HttpServlet {
 			{
 				response.sendRedirect("/ACASESTUDY/AddUserForm.jsp");
 			}
-			//Delete User Request
+			//Delete User
 			else if(request.getRequestURI().equals("/ACASESTUDY/Users/DeleteUser"))
 			{
 				if(userServ.deleteUser(request.getParameter("u")))
@@ -68,9 +68,17 @@ public class UserController extends HttpServlet {
 			//REGISTER USER
 			if(request.getRequestURI().equals("/ACASESTUDY/Users/RegisterUser"))
 			{
-				if(userServ.addUser(request.getParameter("username"), request.getParameter("firstname"), 
-						request.getParameter("middlename"),request.getParameter("lastname") , Integer.parseInt(request.getParameter("userid")), 
-						request.getParameter("role"),request.getParameter("Create"),request.getParameter("Update"),request.getParameter("Delete"))) {
+				String username = request.getParameter("username");
+				String firstname = request.getParameter("firstname");
+				String middlename = request.getParameter("middlename");
+				String lastname = request.getParameter("lastname");
+				int userid = Integer.parseInt(request.getParameter("userid"));
+				String role = request.getParameter("role");
+				
+				if(userServ.addUser(username, firstname,middlename,lastname , userid,
+						role,request.getParameter("Create"),
+						request.getParameter("Update"),
+						request.getParameter("Delete"))) {
 					System.out.println("Add Successful");
 					response.sendRedirect("/ACASESTUDY/Users/");
 				}else {

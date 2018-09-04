@@ -1,30 +1,42 @@
 package dao;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public abstract class DbConnection 
 {
 	private Connection conn;
-	private String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
-	private String DB_CONNECTION = "jdbc:mysql://localhost:3306/casestudy";
-	private String DB_USER = "root";
-	private String DB_PASSWORD = "admin";
-	
-	public DbConnection() {
-		try {
-			Class.forName(DB_DRIVER);
-			conn = (Connection) DriverManager.getConnection( DB_CONNECTION, DB_USER ,DB_PASSWORD);
+
+	protected Connection getConnection() {
+		try 
+		{
+			Properties properties = new Properties();
+			properties.load(getClass().getResourceAsStream("config.properties"));
+			Class.forName(properties.getProperty("DB_DRIVER"));
+			conn = DriverManager.getConnection(	properties.getProperty("DB_URL"),
+					properties.getProperty("DB_USER"),
+					properties.getProperty("DB_PASS"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-	}
-	
-	public Connection getConnection() {
-		
 		return conn;
+	}
+	protected void closeConnection()
+	{
+		try {
+			this.conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

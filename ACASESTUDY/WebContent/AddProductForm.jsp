@@ -32,18 +32,39 @@
 			</div>
 			<div class="form1">
 				<label>Product Type</label>
-				<select name="productType">
+				<select name="productType" id="selectType" onclick="callType()">
 					<option value="Perishable">Perishable</option>
 					<option value="Non Perishable">Non Perishable</option>
 				</select>
 			</div>
-			<div class="form1">
+			<div class="form1" id="expiryDiv">
 				<label>Expiration Date</label>
-				<input type="date" name="expiryDate">
+				<input type="date" name="expiryDate" id="dateId" required>
 			</div>
 			<input class="btn-add" type="submit" name="AddProduct" value="SUBMIT">
 			<a href="/ACASESTUDY/Products/" class="btn-delete">CANCEL</a>
 		</form>
 	</div>
+	
+<script type="text/javascript">
+	function callType()
+	{
+		var select = document.getElementById("selectType");
+		var prodType = select.options[select.selectedIndex].value;
+		var expiryDiv = document.getElementById("expiryDiv");
+		var date = document.getElementById("dateId");
+		
+		if(prodType=='Non Perishable')
+		{
+			expiryDiv.style.display="none";
+			date.value="";
+			date.required=false;
+		}
+		else{
+			expiryDiv.style.display="block";
+			date.required=true;
+		}
+	}
+</script>
 </body>
 </html>

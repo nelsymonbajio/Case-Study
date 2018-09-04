@@ -40,8 +40,8 @@ public class Product
 	public String getName() {
 		return prodName;
 	}
-	public void setName(String name) {
-		this.prodName = name;
+	public void setName(String prodName) {
+		this.prodName = prodName;
 	}
 	public double getPrice() {
 		return price;

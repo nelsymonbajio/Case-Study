@@ -7,39 +7,51 @@ import models.User;
 
 public class UserDAO extends DbConnection
 {
-	private Connection con = this.getConnection();
+	private Connection con;
 	private Statement stmt;
 	private ResultSet rs;
 	private PreparedStatement ps;
 
 	public boolean createUser(User user)
 	{
+		con = super.getConnection();
 		String query="INSERT INTO users(userid,username,password,firstname,middlename,lastname,role,createPriv,deletePriv,updatePriv)"
 				+ "VALUES ('"+user.getUserid()+"', '"+user.getUsername()+"','123','"+user.getFirstname()+"','"+user.getMiddlename()+"'"
 				+ ",'"+user.getLastname()+"','"+user.getRole()+"','"+(user.isCanCreate()? 1 : 0)+"','"+(user.isCanDelete()? 1 : 0)+"','"+(user.isCanUpdate()? 1 : 0)+"')";
 		try {
 			stmt=con.createStatement();
 			stmt.executeUpdate(query);
+			
+			stmt.close();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			super.closeConnection();
 		}
 		return false;
 	}
 	public boolean deleteUser(String username)
 	{
+		con = super.getConnection();
 		String query = "DELETE FROM users WHERE username='"+username+"'";
 		try{
 			stmt=con.createStatement();
 			stmt.executeUpdate(query);
+			stmt.close();
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			super.closeConnection();
 		}
 		return false;
 	}
 	public ArrayList<User> getSpecificUser(String username)
 	{
+		con = super.getConnection();
+		
 		ArrayList<User> user = new ArrayList<User>();
 		String query = "SELECT * FROM users WHERE username='"+username+"'";
 		try {
@@ -64,12 +76,15 @@ public class UserDAO extends DbConnection
 			ps.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			super.closeConnection();
 		}
 		return user;
 	}
 	public boolean updateUser(String id,String userid,String username,String firstname,String middlename,String lastname,String role,
 			String create,String update,String delete)
 	{
+		con = super.getConnection();
 		int c=0, u=0, d=0;
 		
 		if(role.equalsIgnoreCase("admin"))
@@ -92,14 +107,20 @@ public class UserDAO extends DbConnection
 		try {
 			stmt=con.createStatement();
 			stmt.executeUpdate(query);
+			
+			stmt.close();
+			
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			super.closeConnection();
 		}
 		return false;
 	}
 	public boolean changePassword(String userid,String oldpass, String newpass)
 	{
+		con = super.getConnection();
 		String query1 = "SELECT * FROM users WHERE userid='"+userid+"'and password='"+oldpass+"'";
 		String query2 = "UPDATE users SET password='"+newpass+"' WHERE userid="+userid+"";
 
@@ -110,16 +131,22 @@ public class UserDAO extends DbConnection
 			{
 				stmt=con.createStatement();
 				stmt.executeUpdate(query2);
+				
+				stmt.close();
+				
 				return true;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			super.closeConnection();
 		}
 		return false;
 	}
 	public boolean userExists(User user)
 	{
+		con = super.getConnection();
 		String query="SELECT * FROM users WHERE username='"+user.getUsername()+"' or userid='"+user.getUserid()+"'";
 		try {
 			ps=con.prepareStatement(query);
@@ -128,13 +155,18 @@ public class UserDAO extends DbConnection
 			{
 				return true;
 			}
+			ps.close();
+			rs.close();
 		}catch(SQLException e){
 			e.printStackTrace();
+		}finally {
+			super.closeConnection();
 		}
 		return false;
 	}
 	public ArrayList<User> getAllUsers()
 	{
+		con = super.getConnection();
 		ArrayList<User> users = new ArrayList<User>();
 		String query="SELECT * FROM users ORDER BY id DESC";
 		try {
@@ -160,6 +192,8 @@ public class UserDAO extends DbConnection
 			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			super.closeConnection();
 		}
 		return users;
 
