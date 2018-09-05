@@ -25,5 +25,15 @@ public class ProductServices {
 	{
 		return prodDAO.deleteProduct(id);
 	}
+	public ArrayList<Product> getProductInfo(String id)
+	{
+		return prodDAO.getSpecificProduct(id);
+	}
+	public boolean updateProduct(String id,String prodname, String prodcode, String prodType, int qty, double price, String expDate) 
+	{
+		if(expDate.equals("")||expDate==null)
+			expDate=null;
+		return prodDAO.updateProduct(id,prodname,prodcode,prodType,qty,price,expDate);
+	}
 
 }

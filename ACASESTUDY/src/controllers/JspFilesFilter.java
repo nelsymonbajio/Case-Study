@@ -10,9 +10,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LoginFilter implements Filter {
+public class JspFilesFilter implements Filter {
 
-	public LoginFilter() {
+	public JspFilesFilter() {
 	}
 
 	public void destroy() {

@@ -10,7 +10,7 @@ import java.util.Properties;
 public abstract class DbConnection 
 {
 	private Connection conn;
-
+	
 	protected Connection getConnection() {
 		try 
 		{

@@ -17,60 +17,70 @@ public class ProductController extends HttpServlet {
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if(request.getSession().getAttribute("username")!=null)
+		if(request.getRequestURI().equals(request.getContextPath()+"/Products/"))
+		{	
+			request.setAttribute("prodList", prodServ.retrieveAllProducts());
+			request.getRequestDispatcher("/Products.jsp").forward(request, response);
+		}
+		//Redirect to add product form
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Products/AddProductForm"))
 		{
-			if(request.getRequestURI().equals(request.getContextPath()+"/Products/"))
-			{	
-				request.setAttribute("prodList", prodServ.retrieveAllProducts());
-				request.getRequestDispatcher("/Products.jsp").forward(request, response);
-			}
-			//Redirect to add product form
-			else if(request.getRequestURI().equals(request.getContextPath()+"/Products/AddProductForm"))
+			response.sendRedirect(request.getContextPath()+"/AddProductForm.jsp");
+		}
+		//DELETE PRODUCT
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Products/DeleteProduct"))
+		{
+			if(prodServ.deleteProduct(request.getParameter("p")))
 			{
-				response.sendRedirect(request.getContextPath()+"/AddProductForm.jsp");
+				response.sendRedirect(request.getContextPath()+"/Products/");
+				System.out.println("Delete success");
 			}
-			else if(request.getRequestURI().equals(request.getContextPath()+"/Products/DeleteProduct"))
-			{
-				if(prodServ.deleteProduct(request.getParameter("p")))
-				{
-					response.sendRedirect(request.getContextPath()+"/Products/");
-					System.out.println("Delete success");
-				}
-				else {
-					System.out.println("Failed");
-				}
+			else {
+				System.out.println("Failed");
 			}
 		}
-		else
+		//UPDATE FORM
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Products/UpdateProductForm"))
 		{
-			System.out.println("no session");
+			request.setAttribute("prodInfo", prodServ.getProductInfo(request.getParameter("p")));
+			request.getRequestDispatcher("/UpdateProductForm.jsp").forward(request, response);
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		if(request.getSession().getAttribute("username")!=null)
+		//Insert PRODUCT
+		if(request.getRequestURI().equals(request.getContextPath()+"/Products/AddProduct"))
 		{
-			//Insert PRODUCT
-			if(request.getRequestURI().equals(request.getContextPath()+"/Products/AddProduct"))
-			{
-				String prodname = request.getParameter("prodname");
-				String prodcode = request.getParameter("prodcode");
-				int qty = Integer.parseInt(request.getParameter("quantity"));
-				double price = Double.parseDouble(request.getParameter("price"));
-				String prodType = request.getParameter("productType");
-				String expDate = request.getParameter("expiryDate");
-				System.out.println(expDate);
-				if(prodServ.addProduct(prodname, prodcode, prodType, qty, price, expDate)) {
-					response.sendRedirect("/ACASESTUDY/Products/");
-				}else {
-					System.out.println("Failed");
-				}
+			String prodname = request.getParameter("prodname");
+			String prodcode = request.getParameter("prodcode");
+			int qty = Integer.parseInt(request.getParameter("quantity"));
+			double price = Double.parseDouble(request.getParameter("price"));
+			String prodType = request.getParameter("productType");
+			String expDate = request.getParameter("expiryDate");
+			System.out.println(expDate);
+			if(prodServ.addProduct(prodname, prodcode, prodType, qty, price, expDate)) {
+				response.sendRedirect("/ACASESTUDY/Products/");
+			}else {
+				System.out.println("Failed");
 			}
 		}
-		else
+		//UPDATE PRODUCT
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Products/UpdateProduct"))
 		{
-			System.out.println("No session");
+			String id = request.getParameter("prodid");
+			String prodname = request.getParameter("prodname");
+			String prodcode = request.getParameter("prodcode");
+			int qty = Integer.parseInt(request.getParameter("quantity"));
+			double price = Double.parseDouble(request.getParameter("price"));
+			String prodType = request.getParameter("productType");
+			String expDate = request.getParameter("expiryDate");
+
+			if(prodServ.updateProduct(id,prodname, prodcode, prodType, qty, price, expDate)) {
+				response.sendRedirect("/ACASESTUDY/Products/");
+			}else {
+				System.out.println("Failed");
+			}
 		}
 	}
-
 }
+

@@ -30,12 +30,12 @@
     <url-pattern>/Users/*</url-pattern>
   </servlet-mapping>
   <filter>
-    <display-name>LoginFilter</display-name>
-    <filter-name>LoginFilter</filter-name>
-    <filter-class>controllers.LoginFilter</filter-class>
+    <display-name>JspFilesFilter</display-name>
+    <filter-name>JspFilesFilter</filter-name>
+    <filter-class>controllers.JspFilesFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>LoginFilter</filter-name>
+    <filter-name>JspFilesFilter</filter-name>
     <url-pattern>*.jsp</url-pattern>
   </filter-mapping>
   <servlet>
@@ -48,4 +48,22 @@
     <servlet-name>ProductController</servlet-name>
     <url-pattern>/Products/*</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>ProductsRequestFilter</display-name>
+    <filter-name>ProductsRequestFilter</filter-name>
+    <filter-class>controllers.ProductsRequestFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ProductsRequestFilter</filter-name>
+    <url-pattern>/Products/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <display-name>UsersRequestFilter</display-name>
+    <filter-name>UsersRequestFilter</filter-name>
+    <filter-class>controllers.UsersRequestFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>UsersRequestFilter</filter-name>
+    <url-pattern>/Users/*</url-pattern>
+  </filter-mapping>
 </web-app>
