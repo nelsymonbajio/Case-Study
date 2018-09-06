@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +20,7 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<div style="width:800px; margin:0 auto;">
+	<div class="mainDiv">
 		<div>
 			<div>
 				<h2>PRODUCTS</h2>
@@ -55,7 +56,7 @@
 				<td>${p.expiryDate}</td>
 				<c:choose>
 					<c:when test="${sessionScope.updatePriv==true}">
-						<td><a href="UpdateProductForm?p=${p.prodid}" class="btn-update">Update</a></td>
+						<td><a href="UpdateProductForm?p=${p.prodid}" class="btn-update">UPDATE</a></td>
 					</c:when>
 					<c:otherwise>
 						<td></td>
@@ -63,7 +64,7 @@
 				</c:choose>
 				<c:choose>
 					<c:when test="${sessionScope.deletePriv==true}">
-						<td><a href="DeleteProduct?p=${p.prodid}" class="btn-delete">Delete</a></td>
+						<td><a href="DeleteProduct?p=${p.prodid}" class="btn-delete">DELETE</a></td>
 					</c:when>
 					<c:otherwise>
 						<td></td>

@@ -42,29 +42,10 @@
 				<input type="date" name="expiryDate" id="dateId" required>
 			</div>
 			<input class="btn-add" type="submit" name="AddProduct" value="SUBMIT">
-			<a href="/ACASESTUDY/Products/" class="btn-delete">CANCEL</a>
+			<a href="${pageContext.request.contextPath}/Products/" class="btn-delete" style="width:70px !important;">CANCEL</a>
 		</form>
 	</div>
 	
-<script type="text/javascript">
-	function callType()
-	{
-		var select = document.getElementById("selectType");
-		var prodType = select.options[select.selectedIndex].value;
-		var expiryDiv = document.getElementById("expiryDiv");
-		var date = document.getElementById("dateId");
-		
-		if(prodType=='Non Perishable')
-		{
-			expiryDiv.style.display="none";
-			date.value="";
-			date.required=false;
-		}
-		else{
-			expiryDiv.style.display="block";
-			date.required=true;
-		}
-	}
-</script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/AddProduct.js"></script>
 </body>
 </html>

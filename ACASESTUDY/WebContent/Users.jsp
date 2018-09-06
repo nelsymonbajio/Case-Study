@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +12,7 @@
 
 <body>
 	<jsp:include page="mainHeader.jsp"/>
-	<div style="width:800px; margin:0 auto;">
+	<div class="mainDiv">
 		<div>
 			<div><h2>USERS</h2></div>
 			<div><a href="AddUserForm" class="btn-add" style="float:right;">ADD USER</a></div>
@@ -30,15 +31,15 @@
 			</tr>
 			<c:forEach var="u" items="${usersList}">
 			<tr>
-				<td>${u.id}</td>
-				<td>${u.userid}</td>
-				<td>${u.username}</td>
-				<td>${u.firstname}</td>
-				<td>${u.middlename}</td>
-				<td>${u.lastname}</td>
-				<td>${u.role}</td>
-				<td><a href="UpdateUserForm?u=${u.username}" class="btn-update">Update</a></td>
-				<td><a href="DeleteUser?u=${u.username}" class="btn-delete">Delete</a></td>
+				<td>${fn:escapeXml(u.id)}</td>
+				<td>${fn:escapeXml(u.userid)}</td>
+				<td>${fn:escapeXml(u.username)}</td>
+				<td>${fn:escapeXml(u.firstname)}</td>
+				<td>${fn:escapeXml(u.middlename)}</td>
+				<td>${fn:escapeXml(u.lastname)}</td>
+				<td>${fn:escapeXml(u.role)}</td>
+				<td><a href="UpdateUserForm?u=${fn:escapeXml(u.username)}" class="btn-update">UPDATE</a></td>
+				<td><a href="DeleteUser?u=${fn:escapeXml(u.username)}" class="btn-delete">DELETE</a></td>
 			</tr>
 			</c:forEach>
 		</table>

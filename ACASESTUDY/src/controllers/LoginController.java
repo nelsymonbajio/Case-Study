@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
 		if(request.getRequestURI().equals(request.getContextPath()+"/Login/Logout"))
 		{
 			request.getSession().invalidate();
-			response.sendRedirect("/ACASESTUDY/Login.jsp");
+			response.sendRedirect(request.getContextPath()+"/Login.jsp");
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -43,9 +43,9 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("username", request.getParameter("username"));
 				session.setAttribute("accessLevel", "admin");
 				//set privileges
-				session.setAttribute("createPriv", userServ.getUserInfo(request.getParameter("username")).get(0).isCanCreate());
-				session.setAttribute("updatePriv", userServ.getUserInfo(request.getParameter("username")).get(0).isCanUpdate());
-				session.setAttribute("deletePriv", userServ.getUserInfo(request.getParameter("username")).get(0).isCanDelete());
+				session.setAttribute("createPriv", true);
+				session.setAttribute("updatePriv", true);
+				session.setAttribute("deletePriv", true);
 				request.getRequestDispatcher("AdminMain.jsp").forward(request, response);
 			}
 			else if(logserv.isUserExists()&&!logserv.isAdmin())

@@ -20,19 +20,19 @@
 			</div>
 			<div class="form1">
 				<label for="username">Username</label>
-				<input type="text" class="align-form" name="username" required placeholder="Type Username">
+				<input type="text" class="align-form" name="username" required placeholder="Type Username" pattern="^[a-zA-Z0-9]*$">
 			</div>
 			<div class="form1">
 				<label>First name</label>
-				<input type="text" class="align-form" name="firstname" required placeholder="Type Firstname">
+				<input type="text" class="align-form" name="firstname" required placeholder="Type Firstname" pattern="^[a-zA-Z ]+$">
 			</div>
 			<div class="form1">
 				<label>Middle name</label>
-				<input type="text" class="align-form" name="middlename" required placeholder="Type Middlename">
+				<input type="text" class="align-form" name="middlename" required placeholder="Type Middlename" pattern="^[a-zA-Z ]+$">
 			</div>
 			<div class="form1">
 				<label>Last name</label>
-				<input type="text" class="align-form" name="lastname" required placeholder="Type Lastname">
+				<input type="text" class="align-form" name="lastname" required placeholder="Type Lastname" pattern="^[a-zA-Z ]+$">
 			</div>
 			<div class="form1">
 				<label>Account Role</label>
@@ -48,23 +48,10 @@
 			</div>
 			
 			<input class="btn-add" type="submit" name="AddUser" value="REGISTER">
-			<a href="/ACASESTUDY/Users/" class="btn-delete">CANCEL</a>
+			<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
 		</form>
 	</div>
-	<script type="text/javascript">
-		function priv()
-		{
-			var select = document.getElementById("selectRole");
-			var role = select.options[select.selectedIndex].value;
-			var privDiv = document.getElementById("privDiv");
-			if(role == "Admin")
-			{
-				privDiv.style.display = "none"
-			}
-			else{
-				privDiv.style.display = "block";
-			}
-		}
-	</script>
+	
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/UpdateUser.js"></script>
 </body>
 </html>

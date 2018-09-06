@@ -17,10 +17,12 @@ public class JspFilesFilter implements Filter {
 
 	public void destroy() {
 	}
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException 
+	{
+		
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
-
+		
 		if(servletRequest.getSession().getAttribute("username")!=null&&servletRequest.getSession().getAttribute("accessLevel").equals("admin"))
 		{
 			if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Users.jsp"))
@@ -37,13 +39,11 @@ public class JspFilesFilter implements Filter {
 		}
 		else if(servletRequest.getSession().getAttribute("username")!=null&&servletRequest.getSession().getAttribute("accessLevel").equals("user"))
 		{
-			//Filter Access to admin modules
 			if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Users.jsp")|| servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/AddUserForm.jsp")
 					||servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateUserForm.jsp")) 
 			{ 
 				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
 			}
-			//Filter 
 			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/AddProductForm.jsp")&&Boolean.TRUE.equals(servletRequest.getSession().getAttribute("createPriv")))
 			{	
 				chain.doFilter(request,response);
@@ -52,11 +52,11 @@ public class JspFilesFilter implements Filter {
 			{
 				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
 			}
-			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateProductForm.jsp")&&Boolean.TRUE.equals(servletRequest.getSession().getAttribute("createPriv")))
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateProductForm.jsp")&&Boolean.TRUE.equals(servletRequest.getSession().getAttribute("updatePriv")))
 			{
 				chain.doFilter(request,response);
 			}
-			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateProductForm.jsp")&&Boolean.FALSE.equals(servletRequest.getSession().getAttribute("createPriv")))
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateProductForm.jsp")&&Boolean.FALSE.equals(servletRequest.getSession().getAttribute("updatePriv")))
 			{
 				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
 			}

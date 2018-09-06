@@ -3,9 +3,9 @@
 		Product Managerment
 	</div>
 	<ul>
-		<li><a href="/ACASESTUDY/UserMain.jsp">HOME</a></li>
-		<li><a href="/ACASESTUDY/Products/">PRODUCTS</a></li>
-		<li><a href="Profile.jsp">PROFILE</a></li>
-		<li><a href="/ACASESTUDY/Login/Logout">LOGOUT</a></li>
+		<li><a href="${pageContext.request.contextPath}/UserMain.jsp">HOME</a></li>
+		<li><a href="${pageContext.request.contextPath}/Products/">PRODUCTS</a></li>
+		<li><a href="${pageContext.request.contextPath}/Profile.jsp">PROFILE</a></li>
+		<li><a href="${pageContext.request.contextPath}/Login/Logout">LOGOUT</a></li>
 	</ul>
 </nav>

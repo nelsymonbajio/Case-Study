@@ -14,30 +14,31 @@ public class UserController extends HttpServlet {
 	}
 	private UserServices userServ = new UserServices();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		//Retrieve All Users
-		if(request.getRequestURI().equals("/ACASESTUDY/Users/"))
+		if(request.getRequestURI().equals(request.getContextPath()+"/Users/"))
 		{	
 			request.setAttribute("usersList", userServ.retrieveAllUsers());
 			request.getRequestDispatcher("/Users.jsp").forward(request, response);
 		}
 		//Redirect to Add User Form Page
-		else if(request.getRequestURI().equals("/ACASESTUDY/Users/AddUserForm"))
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Users/AddUserForm"))
 		{
-			response.sendRedirect("/ACASESTUDY/AddUserForm.jsp");
+			response.sendRedirect(request.getContextPath()+"/AddUserForm.jsp");
 		}
 		//Delete User
-		else if(request.getRequestURI().equals("/ACASESTUDY/Users/DeleteUser"))
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Users/DeleteUser"))
 		{
 			if(userServ.deleteUser(request.getParameter("u")))
 			{
 				System.out.println("delete successful");
-				response.sendRedirect("/ACASESTUDY/Users/");
+				response.sendRedirect(request.getContextPath()+"/Users/");
 			}
 		}
 		//Redirect to Update User Form Page
-		else if(request.getRequestURI().equals("/ACASESTUDY/Users/UpdateUserForm"))
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Users/UpdateUserForm"))
 		{
 			request.setAttribute("userInfo", userServ.getUserInfo(request.getParameter("u")));
 			request.getRequestDispatcher("/UpdateUserForm.jsp").forward(request, response);
@@ -47,7 +48,7 @@ public class UserController extends HttpServlet {
 	{
 
 		//REGISTER USER
-		if(request.getRequestURI().equals("/ACASESTUDY/Users/RegisterUser"))
+		if(request.getRequestURI().equals(request.getContextPath()+"/Users/RegisterUser"))
 		{
 			String username = request.getParameter("username");
 			String firstname = request.getParameter("firstname");
@@ -61,14 +62,14 @@ public class UserController extends HttpServlet {
 					request.getParameter("Update"),
 					request.getParameter("Delete"))) {
 				System.out.println("Add Successful");
-				response.sendRedirect("/ACASESTUDY/Users/");
+				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
-				response.sendRedirect("/ACASESTUDY/AddUserForm.jsp");
+				response.sendRedirect(request.getContextPath()+"/AddUserForm.jsp");
 			}
 
 		}
 		//CHANGE PASSWORD REQUEST
-		else if(request.getRequestURI().equals("/ACASESTUDY/Users/UserChangePass"))
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Users/UserChangePass"))
 		{
 			String userid= request.getParameter("userID");
 			String oldpass = request.getParameter("oldpass");
@@ -76,14 +77,14 @@ public class UserController extends HttpServlet {
 
 			if(userServ.changePassword(userid,oldpass,newpass)) {
 				System.out.println("Change password successful");
-				response.sendRedirect("/ACASESTUDY/Users/");
+				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
 				System.out.println("Old Password Incorrect");
 			}
 
 		}
 		//UPDATE USER REQUEST
-		else if(request.getRequestURI().equals("/ACASESTUDY/Users/UpdateUser"))
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Users/UpdateUser"))
 		{
 			String id = request.getParameter("id");
 			String userid = request.getParameter("userid");
@@ -95,9 +96,10 @@ public class UserController extends HttpServlet {
 			String create = request.getParameter("Create");
 			String update = request.getParameter("Update");
 			String delete = request.getParameter("Delete");
+			
 			if(userServ.updateUser(id,userid,username,firstname,middlename,lastname,role,create,update,delete)) {
 				System.out.println("Success");
-				response.sendRedirect("/ACASESTUDY/Users/");
+				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
 				System.out.println("Update error");
 			}

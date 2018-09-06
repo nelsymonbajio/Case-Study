@@ -37,59 +37,73 @@
 					<label>Last name</label>
 					<input type="text" class="align-form" name="lastname" required value="${userInfo[0].lastname}">
 				</div>
+				
 				<div class="form1">
-					<c:choose>
-					  <c:when test="${userInfo[0].role=='Admin'}">
-					    <label>Account Role</label>
-						<select name="role">
-							<option value="Admin" selected>Admin</option>
-							<option value="User">User</option>
-						</select>
-					  </c:when>
-					  <c:otherwise>
-						<label>Account Role</label>
-						<select name="role">
-							<option value="Admin">Admin</option>
-							<option value="User" selected>User</option>
-						</select>
-					  </c:otherwise>
-					</c:choose>
+					<label>Account Role</label>
+					<select name="role" id="selectRole" onclick="priv()">
+						<c:choose>
+						  <c:when test="${userInfo[0].role=='Admin'}">
+								<option value="Admin" selected>Admin</option>
+								<option value="User">User</option>
+						  </c:when>
+						  <c:otherwise>
+								<option value="Admin">Admin</option>
+								<option value="User" selected>User</option>
+						  </c:otherwise>
+						</c:choose>
+					</select>
 				</div>
 				<div class="form1">
 					<c:choose>
 						<c:when test="${userInfo[0].role=='Admin'}">
+							<div id="privDiv">
+								<label id="lblCreate" style="display:none;">Create</label>
+								<input type="checkbox" name="Create" value="Create" checked="checked" id="createPriv" style="display:none;">
+								<label id="lblUpdate" style="display:none;">Update</label>
+								<input type="checkbox" name="Update" value="Update" checked="checked" id="updatePriv" style="display:none;">
+								<label id="lblDelete" style="display:none;">Delete</label>
+								<input type="checkbox" name="Delete" value="Delete" checked="checked" id="deletePriv" style="display:none;">
+							</div>
 						</c:when>
 						<c:otherwise>
-							<c:choose>
-								<c:when test="${userInfo[0].canCreate==true}">
-									<input type="checkbox" name="Create" value="Create" checked="checked">Create
-								</c:when>
-								<c:otherwise>
-									<input type="checkbox" name="Create" value="Create">Create
-								</c:otherwise>
-							</c:choose> 
-							<c:choose>
-								<c:when test="${userInfo[0].canUpdate==true}">
-									<input type="checkbox" name="Update" value="Update" checked="checked">Update
-								</c:when>
-								<c:otherwise>
-									<input type="checkbox" name="Update" value="Create">Update
-								</c:otherwise>
-							</c:choose> 
-							<c:choose>
-								<c:when test="${userInfo[0].canDelete==true}">
-									<input type="checkbox" name="Delete" value="Delete" checked="checked">Delete
-								</c:when>
-								<c:otherwise>
-									<input type="checkbox" name="Delete" value="Delete">Delete
-								</c:otherwise>
-							</c:choose> 
+							<div id="privDiv">
+								<c:choose>
+									<c:when test="${userInfo[0].canCreate==true}">
+										<label id="lblCreate">Create</label>
+										<input type="checkbox" name="Create" value="Create" checked="checked" id="createPriv">
+									</c:when>
+									<c:otherwise>
+										<label id="lblCreate">Create</label>
+										<input type="checkbox" name="Create" value="Create" id="createPriv">
+									</c:otherwise>
+								</c:choose> 
+								<c:choose>
+									<c:when test="${userInfo[0].canUpdate==true}">
+										<label id="lblUpdate">Update</label>
+										<input type="checkbox" name="Update" value="Update" checked="checked" id="updatePriv">
+									</c:when>
+									<c:otherwise>
+										<label id="lblUpdate">Update</label>
+										<input type="checkbox" name="Update" value="Create" id="updatePriv">
+									</c:otherwise>
+								</c:choose> 
+								<c:choose>
+									<c:when test="${userInfo[0].canDelete==true}">
+										<label id="lblDelete">Delete</label>
+										<input type="checkbox" name="Delete" value="Delete" checked="checked" id="deletePriv">
+									</c:when>
+									<c:otherwise>
+										<label id="lblDelete">Delete</label>
+										<input type="checkbox" name="Delete" value="Delete" id="deletePriv">
+									</c:otherwise>
+								</c:choose> 
+							</div>
 						</c:otherwise>
 					</c:choose>
 				</div>
 				<div class="form1">
 					<input class="btn-add" type="submit" name="UpdateUser" value="UPDATE">
-					<a href="/ACASESTUDY/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
+					<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
 				</div>
 			</form>
 		</div>
@@ -115,22 +129,11 @@
 				<div class="form1">
 					<input type="hidden" name="userID" value="${userInfo[0].userid}">
 					<input class="btn-add" type="submit" name="ChangePassUser" value="Change Password" required onkeyup='check();'>
-					<a href="/ACASESTUDY/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
+					<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
 				</div>
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript">
-		var check = function() {
-			if (document.getElementById('password').value == document
-					.getElementById('confirm_password').value) {
-				document.getElementById('message').style.color = 'green';
-				document.getElementById('message').innerHTML = 'matching';
-			} else {
-				document.getElementById('message').style.color = 'red';
-				document.getElementById('message').innerHTML = 'not matching';
-			}
-		}
-	</script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/UpdateUser.js"></script>
 </body>
 </html>

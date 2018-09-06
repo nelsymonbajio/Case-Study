@@ -5,7 +5,10 @@ body {
 	padding: 0px;
 	font-family: sans-serif;
 }
-
+.mainDiv{
+	width:1000px; 
+	margin:0 auto;
+}
 nav {
 	width: 100%;
 	background: #02075d;

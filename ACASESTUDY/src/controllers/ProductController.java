@@ -15,8 +15,10 @@ public class ProductController extends HttpServlet {
 	public ProductController() {
 		super();
 	}
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 
+		//Retrieve All Products
 		if(request.getRequestURI().equals(request.getContextPath()+"/Products/"))
 		{	
 			request.setAttribute("prodList", prodServ.retrieveAllProducts());
