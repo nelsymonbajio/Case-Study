@@ -6,7 +6,7 @@
 		<li><a href="${pageContext.request.contextPath}/AdminMain.jsp">HOME</a></li>
 		<li><a href="${pageContext.request.contextPath}/Products/">PRODUCTS</a></li>
 		<li><a href="${pageContext.request.contextPath}/Users/">USERS</a></li>
-		<li><a href="${pageContext.request.contextPath}/Profile.jsp">PROFILE</a></li>
+		<li><a href="${pageContext.request.contextPath}/Profile/">PROFILE</a></li>
 		<li><a href="${pageContext.request.contextPath}/Login/Logout">LOGOUT</a></li>
 	</ul>
 </nav>

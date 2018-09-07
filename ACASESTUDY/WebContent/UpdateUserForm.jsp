@@ -19,23 +19,23 @@
 				<input type="hidden" name="id" value="${userInfo[0].id}">
 				<div class="form1">
 					<label for="userid">User ID</label>
-					<input type="number" class="align-form" name="userid" required value="${userInfo[0].userid}">
+					<input type="number" class="align-form" name="userid" required value="${userInfo[0].userid}" maxlength="11">
 				</div>
 				<div class="form1">
 					<label for="username">Username</label>
-					<input type="text" class="align-form" name="username" required value="${userInfo[0].username}">
+					<input type="text" class="align-form" name="username" required value="${userInfo[0].username}" pattern="^[a-zA-Z0-9]*$" maxlength="20">
 				</div>
 				<div class="form1">
 					<label>First name</label>
-					<input type="text" class="align-form" name="firstname" required value="${userInfo[0].firstname}">
+					<input type="text" class="align-form" name="firstname" required value="${userInfo[0].firstname}" pattern="^[a-zA-Z ]+$" maxlength="30">
 				</div>
 				<div class="form1">
 					<label>Middle name</label>
-					<input type="text" class="align-form" name="middlename" required value="${userInfo[0].middlename}">
+					<input type="text" class="align-form" name="middlename" required value="${userInfo[0].middlename}" pattern="^[a-zA-Z ]+$" maxlength="30">
 				</div>
 				<div class="form1">
 					<label>Last name</label>
-					<input type="text" class="align-form" name="lastname" required value="${userInfo[0].lastname}">
+					<input type="text" class="align-form" name="lastname" required value="${userInfo[0].lastname}" pattern="^[a-zA-Z ]+$" maxlength="30">
 				</div>
 				
 				<div class="form1">
@@ -115,15 +115,15 @@
 			<form action="UserChangePass" method="POST">
 				<div class="form1">
 					<label for="oldpass">Old Password</label>
-					<input type="password" class="align-form" name="oldpass" required>
+					<input type="password" class="align-form" name="oldpass" required maxlength="16">
 				</div>
 				<div class="form1">
 					<label for="newpass">New Password</label>
-					<input type="password" id="password" class="align-form" name="newpass" required>
+					<input type="password" id="password" class="align-form" name="newpass" required maxlength="16">
 				</div>
 				<div class="form1">
 					<label for="newpass">Confirm Password</label>
-					<input type="password" id="confirm_password"class="align-form" name="confirmpass" required onkeyup='check();'>
+					<input type="password" id="confirm_password"class="align-form" name="confirmpass" required onkeyup='check();' maxlength="16">
 					<span id='message'></span>
 				</div>
 				<div class="form1">

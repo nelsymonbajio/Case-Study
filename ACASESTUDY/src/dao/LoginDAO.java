@@ -14,10 +14,13 @@ public class LoginDAO extends DbConnection
 	public void searchUser(String username, String password)
 	{
 		con = super.getConnection();
-		String query="SELECT * FROM users WHERE username='"+username+"' AND password='"+password+"'";
+		String query="SELECT * FROM users WHERE username = ? AND password = ?";
 		
 		try {
+			
 			ps = con.prepareStatement(query);
+			ps.setString(1, username);
+			ps.setString(2,password);
 			rs = ps.executeQuery();
 			
 			while(rs.next())

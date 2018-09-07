@@ -21,21 +21,19 @@ public class ProductDAO extends DbConnection{
 	{
 		con = this.getConnection();
 		
-		String query="";
-		//PRODUCT WITH NO EXP DATE "NULL"
-		if(expdate==null)
-		{
-			query="INSERT INTO products(prodcode,prodname,producttype,qty,price,expirydate) VALUES ("
-					+ "'"+prodcode+"','"+prodname+"','"+prodtype+"','"+qty+"','"+price+"',"+expdate+")";
-		}
-		//PRODUCT WITH EXP DATE
-		else {
-			query="INSERT INTO products(prodcode,prodname,producttype,qty,price,expirydate) VALUES ("
-					+ "'"+prodcode+"','"+prodname+"','"+prodtype+"','"+qty+"','"+price+"','"+expdate+"')";
-		}
+		String query="INSERT INTO products(prodcode,prodname,producttype,qty,price,expirydate) VALUES (?,?,?,?,?,?)";
+		
 		try {
-			stmt=con.createStatement();
-			stmt.executeUpdate(query);
+			ps=con.prepareStatement(query);
+			ps.setString(1, prodcode);
+			ps.setString(2, prodname);
+			ps.setString(3, prodtype);
+			ps.setInt(4, qty);
+			ps.setDouble(5, price);
+			ps.setString(6, expdate);
+			
+			ps.executeUpdate();
+			ps.close();
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -79,10 +77,11 @@ public class ProductDAO extends DbConnection{
 		con = this.getConnection();
 
 		ArrayList<Product> prods = new ArrayList<Product>();
-		String query = "SELECT * FROM products WHERE id='"+id+"'";
+		String query = "SELECT * FROM products WHERE id = ?";
 		
 		try {
 			ps=con.prepareStatement(query);
+			ps.setString(1, id);
 			rs=ps.executeQuery();
 			while(rs.next())
 			{
@@ -96,6 +95,8 @@ public class ProductDAO extends DbConnection{
 				prod.setExpiryDate(rs.getDate("expiryDate"));
 				prods.add(prod);
 			}
+			ps.close();
+			rs.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -107,10 +108,12 @@ public class ProductDAO extends DbConnection{
 	{
 		con = this.getConnection();
 		
-		String query="DELETE FROM products WHERE id='"+id+"'";
+		String query="DELETE FROM products WHERE id = ?";
 		try{
-			stmt=con.createStatement();
-			stmt.executeUpdate(query);
+			ps=con.prepareStatement(query);
+			ps.setString(1, id);
+			ps.executeUpdate();
+			ps.close();
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -123,21 +126,19 @@ public class ProductDAO extends DbConnection{
 	{
 		con = this.getConnection();
 		
-		String query="";
-		//PRODUCT WITH NO EXP DATE "NULL"
-		if(expDate==null)
-		{
-			query="UPDATE products SET prodname='"+prodname+"',prodcode='"+prodcode+"',productType='"+prodType+"',qty='"+qty+"'"
-					+ ",price='"+price+"',expirydate="+expDate+" WHERE id='"+id+"'";
-		}
-		//PRODUCT WITH EXP DATE
-		else {
-			query="UPDATE products SET prodname='"+prodname+"',prodcode='"+prodcode+"',productType='"+prodType+"',qty='"+qty+"'"
-					+ ",price='"+price+"',expirydate='"+expDate+"' WHERE id='"+id+"'";
-		}
+		String query="UPDATE products SET prodname=?,prodcode=?,productType=?,qty=?,price=?,expirydate=? WHERE id=?";
+		
 		try {
-			stmt=con.createStatement();
-			stmt.executeUpdate(query);
+			ps=con.prepareStatement(query);
+			ps.setString(1, prodname);
+			ps.setString(2, prodcode);
+			ps.setString(3, prodType);
+			ps.setInt(4, qty);
+			ps.setDouble(5, price);
+			ps.setString(6, expDate);
+			ps.setString(7, id);
+			ps.executeUpdate();
+			ps.close();
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();

@@ -132,3 +132,9 @@ table tr:nth-child(odd) td {
 .right{
 	float:right;
 }
+.product-tbl table th{
+	text-align: center;
+	background-color: #cc0000;
+	color: #FFF;
+	padding: 4px 30px 4px 8px;
+}

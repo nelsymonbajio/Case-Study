@@ -66,4 +66,14 @@
     <filter-name>UsersRequestFilter</filter-name>
     <url-pattern>/Users/*</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProfileController</display-name>
+    <servlet-name>ProfileController</servlet-name>
+    <servlet-class>controllers.ProfileController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileController</servlet-name>
+    <url-pattern>/Profile/*</url-pattern>
+  </servlet-mapping>
 </web-app>

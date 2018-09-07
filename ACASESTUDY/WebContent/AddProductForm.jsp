@@ -16,19 +16,19 @@
 		<form action="Products/AddProduct" method="POST">
 			<div class="form1">
 				<label for=prodcode>Product Code</label>
-				<input type="text" class="align-form" name="prodcode" required placeholder="Type Product Code">
+				<input type="text" class="align-form" name="prodcode" required placeholder="Type Product Code" pattern="^[a-zA-Z0-9]*$" maxlength="20">
 			</div>
 			<div class="form1">
 				<label for="prodname">Product Name</label>
-				<input type="text" class="align-form" name="prodname" required placeholder="Type Product Name">
+				<input type="text" class="align-form" name="prodname" required placeholder="Type Product Name" pattern="^[a-zA-Z0-9]*$" maxlength="30">
 			</div>
 			<div class="form1">
 				<label for="quantity">Quantity</label>
-				<input type="number" class="align-form" name="quantity" required placeholder="Type Quantity">
+				<input type="number" class="align-form" name="quantity" required placeholder="Type Quantity" maxlength="11">
 			</div>
 			<div class="form1">
 				<label for="price">Price</label>
-				<input type="number" class="align-form" name="price" required placeholder="Type Price">
+				<input type="number" class="align-form" name="price" required placeholder="Type Price" step=".01">
 			</div>
 			<div class="form1">
 				<label>Product Type</label>

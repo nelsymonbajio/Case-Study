@@ -31,7 +31,7 @@ public class ProductServices {
 	}
 	public boolean updateProduct(String id,String prodname, String prodcode, String prodType, int qty, double price, String expDate) 
 	{
-		if(expDate.equals("")||expDate==null)
+		if(expDate.equals("")||expDate==null||expDate.equals("0000-00-00"))
 			expDate=null;
 		return prodDAO.updateProduct(id,prodname,prodcode,prodType,qty,price,expDate);
 	}

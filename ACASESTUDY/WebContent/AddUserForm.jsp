@@ -16,23 +16,23 @@
 		<form action="Users/RegisterUser" method="POST">
 			<div class="form1">
 				<label for="userid">User ID</label>
-				<input type="number" class="align-form" name="userid" required placeholder="Type Userid">
+				<input type="number" class="align-form" name="userid" required placeholder="Type Userid" maxlength="11">
 			</div>
 			<div class="form1">
 				<label for="username">Username</label>
-				<input type="text" class="align-form" name="username" required placeholder="Type Username" pattern="^[a-zA-Z0-9]*$">
+				<input type="text" class="align-form" name="username" required placeholder="Type Username" pattern="^[a-zA-Z0-9]*$" maxlength="20">
 			</div>
 			<div class="form1">
 				<label>First name</label>
-				<input type="text" class="align-form" name="firstname" required placeholder="Type Firstname" pattern="^[a-zA-Z ]+$">
+				<input type="text" class="align-form" name="firstname" required placeholder="Type Firstname" pattern="^[a-zA-Z ]+$" maxlength="30">
 			</div>
 			<div class="form1">
 				<label>Middle name</label>
-				<input type="text" class="align-form" name="middlename" required placeholder="Type Middlename" pattern="^[a-zA-Z ]+$">
+				<input type="text" class="align-form" name="middlename" required placeholder="Type Middlename" pattern="^[a-zA-Z ]+$" maxlength="30">
 			</div>
 			<div class="form1">
 				<label>Last name</label>
-				<input type="text" class="align-form" name="lastname" required placeholder="Type Lastname" pattern="^[a-zA-Z ]+$">
+				<input type="text" class="align-form" name="lastname" required placeholder="Type Lastname" pattern="^[a-zA-Z ]+$" maxlength="30">
 			</div>
 			<div class="form1">
 				<label>Account Role</label>

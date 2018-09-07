@@ -34,47 +34,49 @@
 				</c:choose>
 		</div>
 		<br><br>
-		<table>
-			<tr>
-				<th>ID</th>
-				<th>ProdCode</th>
-				<th>Name</th>
-				<th>Type</th>
-				<th>Quantity</th>
-				<th>Price</th>
-				<th>Expiration Date</th>
-				<th colspan="2">Action</th>
-			</tr>
-			<c:forEach var="p" items="${prodList}">
-			<tr>
-				<td>${p.prodid}</td>
-				<td>${p.prodCode}</td>
-				<td>${p.name}</td>
-				<td>${p.productType}</td>
-				<td>${p.qty}</td>
-				<td>${p.price}</td>
-				<td>${p.expiryDate}</td>
-				<c:choose>
-					<c:when test="${sessionScope.updatePriv==true}">
-						<td><a href="UpdateProductForm?p=${p.prodid}" class="btn-update">UPDATE</a></td>
-					</c:when>
-					<c:otherwise>
-						<td></td>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when test="${sessionScope.deletePriv==true}">
-						<td><a href="DeleteProduct?p=${p.prodid}" class="btn-delete">DELETE</a></td>
-					</c:when>
-					<c:otherwise>
-						<td></td>
-					</c:otherwise>
-				</c:choose>
-				
-				
-			</tr>
-			</c:forEach>
-		</table>
+		<div class="product-tbl">
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>ProdCode</th>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Expiration Date</th>
+					<th colspan="2">Action</th>
+				</tr>
+				<c:forEach var="p" items="${prodList}">
+				<tr>
+					<td>${p.prodid}</td>
+					<td>${p.prodCode}</td>
+					<td>${p.name}</td>
+					<td>${p.productType}</td>
+					<td>${p.qty}</td>
+					<td>${p.price}</td>
+					<td>${p.expiryDate}</td>
+					<c:choose>
+						<c:when test="${sessionScope.updatePriv==true}">
+							<td><a href="UpdateProductForm?p=${p.prodid}" class="btn-update">UPDATE</a></td>
+						</c:when>
+						<c:otherwise>
+							<td></td>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${sessionScope.deletePriv==true}">
+							<td><a href="DeleteProduct?p=${p.prodid}" class="btn-delete">DELETE</a></td>
+						</c:when>
+						<c:otherwise>
+							<td></td>
+						</c:otherwise>
+					</c:choose>
+					
+					
+				</tr>
+				</c:forEach>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

@@ -21,7 +21,6 @@ public class UserDAO extends DbConnection
 		try {
 			stmt=con.createStatement();
 			stmt.executeUpdate(query);
-			
 			stmt.close();
 			
 			return true;
