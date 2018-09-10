@@ -36,7 +36,7 @@ public class UserDAO extends DbConnection
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return false;
 	}
@@ -54,7 +54,7 @@ public class UserDAO extends DbConnection
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return false;
 	}
@@ -88,7 +88,7 @@ public class UserDAO extends DbConnection
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return user;
 	}
@@ -135,7 +135,7 @@ public class UserDAO extends DbConnection
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return false;
 	}
@@ -164,8 +164,7 @@ public class UserDAO extends DbConnection
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
-			
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return false;
 	}
@@ -187,7 +186,7 @@ public class UserDAO extends DbConnection
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return false;
 	}
@@ -220,7 +219,7 @@ public class UserDAO extends DbConnection
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return users;
 
@@ -237,7 +236,7 @@ public class UserDAO extends DbConnection
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 	}
 }

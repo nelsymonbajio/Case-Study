@@ -32,7 +32,7 @@ public class LoginDAO extends DbConnection
 				}
 			}
 			rs.close();
-			super.closeConnection();
+			this.closeConnection(con);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

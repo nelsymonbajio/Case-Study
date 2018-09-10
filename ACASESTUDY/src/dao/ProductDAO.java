@@ -38,7 +38,7 @@ public class ProductDAO extends DbConnection{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return false;
 	}
@@ -68,7 +68,7 @@ public class ProductDAO extends DbConnection{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return prod;
 	}
@@ -100,7 +100,7 @@ public class ProductDAO extends DbConnection{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return prods;
 	}
@@ -118,7 +118,7 @@ public class ProductDAO extends DbConnection{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return false;
 	}
@@ -143,7 +143,7 @@ public class ProductDAO extends DbConnection{
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			this.closeConnection();
+			this.closeConnection(con);
 		}
 		return false;
 	}

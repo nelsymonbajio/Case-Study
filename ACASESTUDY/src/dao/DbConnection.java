@@ -31,10 +31,10 @@ public abstract class DbConnection
 		}
 		return conn;
 	}
-	protected void closeConnection()
+	protected void closeConnection(Connection conn)
 	{
 		try {
-			this.conn.close();
+			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
