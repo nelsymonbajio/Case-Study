@@ -54,7 +54,14 @@
 					<td>${p.productType}</td>
 					<td>${p.qty}</td>
 					<td>${p.price}</td>
-					<td>${p.expiryDate}</td>
+					<c:choose>
+						<c:when test="${empty p.expiryDate}">
+							<td>N/A</td>
+						</c:when>
+						<c:otherwise>
+							<td>${p.expiryDate}</td>
+						</c:otherwise>
+					</c:choose>
 					<c:choose>
 						<c:when test="${sessionScope.updatePriv==true}">
 							<td><a href="UpdateProductForm?p=${p.prodid}" class="btn-update">UPDATE</a></td>
@@ -65,7 +72,7 @@
 					</c:choose>
 					<c:choose>
 						<c:when test="${sessionScope.deletePriv==true}">
-							<td><a href="DeleteProduct?p=${p.prodid}" class="btn-delete">DELETE</a></td>
+							<td><a href="DeleteProduct?p=${p.prodid}" class="btn-delete" onclick="return confirm('Are you sure?')">DELETE</a></td>
 						</c:when>
 						<c:otherwise>
 							<td></td>

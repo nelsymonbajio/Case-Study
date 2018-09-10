@@ -11,6 +11,7 @@ public class UserServices
 
 	public boolean addUser(String username,String firstname,String middlename,String lastname,int userId,String role,String create,String update,String delete)
 	{
+		System.out.println(create);
 		User user = new User();
 		user.setUsername(username);
 		user.setFirstname(firstname);
@@ -62,5 +63,9 @@ public class UserServices
 	public boolean changePassword(String userid,String oldpass,String newpass)
 	{
 		return userDAO.changePassword(userid,oldpass,newpass);
+	}
+	public void resetUser(String userid) 
+	{
+		userDAO.resetUser(userid);
 	}
 }

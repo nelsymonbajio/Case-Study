@@ -1,4 +1,4 @@
-package controllers;
+package filters;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -19,10 +19,10 @@ public class JspFilesFilter implements Filter {
 	}
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException 
 	{
-		
+
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
-		
+
 		if(servletRequest.getSession().getAttribute("username")!=null&&servletRequest.getSession().getAttribute("accessLevel").equals("admin"))
 		{
 			if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Users.jsp"))
@@ -32,6 +32,10 @@ public class JspFilesFilter implements Filter {
 			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Products.jsp"))
 			{
 				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
+			}
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Profile.jsp"))
+			{
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Profile/");
 			}
 			else {
 				chain.doFilter(request, response);
@@ -43,6 +47,10 @@ public class JspFilesFilter implements Filter {
 					||servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateUserForm.jsp")) 
 			{ 
 				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
+			}
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Profile.jsp"))
+			{
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Profile/");
 			}
 			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/AddProductForm.jsp")&&Boolean.TRUE.equals(servletRequest.getSession().getAttribute("createPriv")))
 			{	

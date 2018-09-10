@@ -35,7 +35,6 @@ public class ProductController extends HttpServlet {
 			if(prodServ.deleteProduct(request.getParameter("p")))
 			{
 				response.sendRedirect(request.getContextPath()+"/Products/");
-				System.out.println("Delete success");
 			}
 			else {
 				System.out.println("Failed");

@@ -1,4 +1,4 @@
-package controllers;
+package filters;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -9,24 +9,26 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-public class UsersRequestFilter implements Filter {
 
-    public UsersRequestFilter() {
+public class ProfileRequestFilter implements Filter {
+
+    public ProfileRequestFilter() {
     }
 	public void destroy() {
 	}
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
+
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException 
+	{
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
 		
-		if(servletRequest.getSession().getAttribute("username")!=null&&servletRequest.getSession().getAttribute("accessLevel").equals("admin"))
+		if(servletRequest.getSession().getAttribute("username")!=null)
 		{
 			chain.doFilter(request, response);
 		}
-		else if(servletRequest.getSession().getAttribute("username")!=null&&servletRequest.getSession().getAttribute("accessLevel").equals("user"))
+		else
 		{
-			servletResponse.sendRedirect(servletRequest.getContextPath()+"/UserMain.jsp");
+			servletResponse.sendRedirect(servletRequest.getContextPath()+"/Login.jsp");
 		}
 	}
 	public void init(FilterConfig fConfig) throws ServletException {

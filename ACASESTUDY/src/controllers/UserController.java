@@ -33,7 +33,6 @@ public class UserController extends HttpServlet {
 		{
 			if(userServ.deleteUser(request.getParameter("u")))
 			{
-				System.out.println("delete successful");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}
 		}
@@ -80,6 +79,7 @@ public class UserController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
 				System.out.println("Old Password Incorrect");
+				response.sendRedirect(request.getContextPath()+"/Users/");
 			}
 
 		}
@@ -103,6 +103,13 @@ public class UserController extends HttpServlet {
 			}else {
 				System.out.println("Update error");
 			}
+		}
+		//RESET USER PASSWORD
+		else if(request.getRequestURI().equals(request.getContextPath()+"/Users/ResetUser"))
+		{
+			String userid = request.getParameter("userID");
+			userServ.resetUser(userid);
+			response.sendRedirect(request.getContextPath()+"/Users/");
 		}
 	}
 }

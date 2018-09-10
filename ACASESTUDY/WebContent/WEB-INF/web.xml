@@ -32,7 +32,7 @@
   <filter>
     <display-name>JspFilesFilter</display-name>
     <filter-name>JspFilesFilter</filter-name>
-    <filter-class>controllers.JspFilesFilter</filter-class>
+    <filter-class>filters.JspFilesFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>JspFilesFilter</filter-name>
@@ -51,7 +51,7 @@
   <filter>
     <display-name>ProductsRequestFilter</display-name>
     <filter-name>ProductsRequestFilter</filter-name>
-    <filter-class>controllers.ProductsRequestFilter</filter-class>
+    <filter-class>filters.ProductsRequestFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>ProductsRequestFilter</filter-name>
@@ -60,7 +60,7 @@
   <filter>
     <display-name>UsersRequestFilter</display-name>
     <filter-name>UsersRequestFilter</filter-name>
-    <filter-class>controllers.UsersRequestFilter</filter-class>
+    <filter-class>filters.UsersRequestFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>UsersRequestFilter</filter-name>
@@ -76,4 +76,13 @@
     <servlet-name>ProfileController</servlet-name>
     <url-pattern>/Profile/*</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>ProfileRequestFilter</display-name>
+    <filter-name>ProfileRequestFilter</filter-name>
+    <filter-class>filters.ProfileRequestFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ProfileRequestFilter</filter-name>
+    <url-pattern>/Profile/*</url-pattern>
+  </filter-mapping>
 </web-app>

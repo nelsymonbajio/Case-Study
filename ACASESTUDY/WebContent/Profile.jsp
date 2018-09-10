@@ -7,7 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css">
 	<title>Profile</title>
-</head>
+</head>	
 <body>
 	<c:choose>
 		<c:when test="${sessionScope.accessLevel=='admin'}">
@@ -19,6 +19,7 @@
 	</c:choose>
 	<div class="mainDiv">
 		<h2>Profile Information</h2>
+	
 		<div>
 			<h3>User ID</h3>
 			<pre>${userInfo[0].userid}</pre>
@@ -43,7 +44,7 @@
 				<pre>Delete</pre>
 			</c:if>
 		</div>
-		
+		<a href="UpdateProfile" class="btn-update" style="width:150px !important;">Update Information</a>
 	</div>
 </body>
 </html>

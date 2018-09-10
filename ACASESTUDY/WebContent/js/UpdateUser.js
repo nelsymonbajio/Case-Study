@@ -1,3 +1,19 @@
+function validateChangepass()
+{
+	var x = document.forms["changePassForm"]["newpass"].value;
+	var y = document.forms["changePassForm"]["confirmpass"].value;
+	
+	if(x==y)
+	{
+		alert("sucess");
+		return true;
+	}
+	else
+	{
+		alert("New password and Confirm password does not match");
+		return false;
+	}
+}
 function priv()
 {
 	var select = document.getElementById("selectRole");

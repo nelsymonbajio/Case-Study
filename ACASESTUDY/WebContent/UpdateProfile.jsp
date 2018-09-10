@@ -3,11 +3,11 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link href="${pageContext.request.contextPath}/css/main.css" type="text/css" rel="stylesheet">
-		<title>Update Information</title>
-	</head>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link href="${pageContext.request.contextPath}/css/main.css" type="text/css" rel="stylesheet">
+	<title>Update Profile</title>
+</head>
 <body>
 	<div class="wrap">
 		<div class="register left">
@@ -15,7 +15,7 @@
 				<h1 align="center">Update Information</h1>
 				<br>
 			</div>
-			<form action="UpdateUser" method="POST">
+			<form action="Updated" method="POST">
 				<input type="hidden" name="id" value="${userInfo[0].id}">
 				<div class="form1">
 					<label for="userid">User ID</label>
@@ -40,18 +40,21 @@
 				
 				<div class="form1">
 					<label>Account Role</label>
-					<select name="role" id="selectRole" onclick="priv()">
 						<c:choose>
-						  <c:when test="${userInfo[0].role=='Admin'}">
-								<option value="Admin" selected>Admin</option>
-								<option value="User">User</option>
-						  </c:when>
-						  <c:otherwise>
-								<option value="Admin">Admin</option>
-								<option value="User" selected>User</option>
-						  </c:otherwise>
+							<c:when test="${userInfo[0].role=='Admin'}">
+								<select name="role" id="selectRole" onclick="priv()">
+									<option value="Admin" selected>Admin</option>
+									<option value="User">User</option>
+								</select>
+						 	</c:when>
+						  	<c:otherwise>
+							  	<select name="role" id="selectRole" disabled>
+									<option value="Admin">Admin</option>
+									<option value="User" selected>User</option>
+								</select>
+						 	</c:otherwise>
 						</c:choose>
-					</select>
+					
 				</div>
 				<div class="form1">
 					<c:choose>
@@ -70,31 +73,31 @@
 								<c:choose>
 									<c:when test="${userInfo[0].canCreate==true}">
 										<label id="lblCreate">Create</label>
-										<input type="checkbox" name="Create" value="Create" checked="checked" id="createPriv">
+										<input type="checkbox" name="Create" value="Create" checked="checked" id="createPriv" disabled>
 									</c:when>
 									<c:otherwise>
 										<label id="lblCreate">Create</label>
-										<input type="checkbox" name="Create" value="Create" id="createPriv">
+										<input type="checkbox" name="Create" value="Create" id="createPriv" disabled>
 									</c:otherwise>
 								</c:choose> 
 								<c:choose>
 									<c:when test="${userInfo[0].canUpdate==true}">
 										<label id="lblUpdate">Update</label>
-										<input type="checkbox" name="Update" value="Update" checked="checked" id="updatePriv">
+										<input type="checkbox" name="Update" value="Update" checked="checked" id="updatePriv" disabled>
 									</c:when>
 									<c:otherwise>
 										<label id="lblUpdate">Update</label>
-										<input type="checkbox" name="Update" value="Create" id="updatePriv">
+										<input type="checkbox" name="Update" value="Create" id="updatePriv" disabled>
 									</c:otherwise>
 								</c:choose> 
 								<c:choose>
 									<c:when test="${userInfo[0].canDelete==true}">
 										<label id="lblDelete">Delete</label>
-										<input type="checkbox" name="Delete" value="Delete" checked="checked" id="deletePriv">
+										<input type="checkbox" name="Delete" value="Delete" checked="checked" id="deletePriv" disabled>
 									</c:when>
 									<c:otherwise>
 										<label id="lblDelete">Delete</label>
-										<input type="checkbox" name="Delete" value="Delete" id="deletePriv">
+										<input type="checkbox" name="Delete" value="Delete" id="deletePriv" disabled>
 									</c:otherwise>
 								</c:choose> 
 							</div>
@@ -102,16 +105,17 @@
 					</c:choose>
 				</div>
 				<div class="form1">
-					<input class="btn-add" type="submit" name="UpdateUser" value="UPDATE">
-					<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
+					<input class="btn-add" type="submit" name="UpdateProfile" value="UPDATE">
+					<a href="${pageContext.request.contextPath}/Profile/" class="btn-delete" style="width:70px !important;">CANCEL</a>
 				</div>
 			</form>
 		</div>
 		<div class="register right">
-		
-			<h1 align="center">Change Password</h1>
-			<br>
-			<form action="UserChangePass" method="POST" name="changePassForm" onsubmit="return validateChangepass()">
+			<div>
+				<h1 align="center">Change Password</h1>
+				<br>
+			</div>
+			<form action="ChangePassword" method="POST" name="changePassForm" onsubmit="return validateChangepass()">
 				<div class="form1">
 					<label for="oldpass">Old Password</label>
 					<input type="password" class="align-form" name="oldpass" required maxlength="16">
@@ -127,18 +131,12 @@
 				</div>
 				<div class="form1">
 					<input type="hidden" name="userID" value="${userInfo[0].userid}">
-					<input class="btn-add" type="submit" name="ChangePassUser" value="Change Password" required onkeyup='check();'>
-					<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
+					<input class="btn-add" type="submit" name="ChangePassUser" value="CHANGE PASSWORD" required onkeyup='check();'>
+					<a href="${pageContext.request.contextPath}/Profile/" class="btn-delete" style="width:70px !important;">CANCEL</a>
 				</div>
-			</form>
-			
-			<form action="ResetUser" method="POST" onsubmit="return confirm('Are you sure you want to reset this account?')">
-				<h1 align="center">Reset Account Password</h1>
-				<input type="hidden" name="userID" value="${userInfo[0].userid}">
-				<input type="submit" value="RESET ACCOUNT" class="btn-delete">
 			</form>
 		</div>
 	</div>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/UpdateUser.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/UpdateUser.js"></script>
 </body>
 </html>

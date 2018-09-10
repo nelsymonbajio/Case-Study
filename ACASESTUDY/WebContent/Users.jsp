@@ -39,7 +39,7 @@
 				<td>${fn:escapeXml(u.lastname)}</td>
 				<td>${fn:escapeXml(u.role)}</td>
 				<td><a href="UpdateUserForm?u=${fn:escapeXml(u.username)}" class="btn-update">UPDATE</a></td>
-				<td><a href="DeleteUser?u=${fn:escapeXml(u.username)}" class="btn-delete">DELETE</a></td>
+				<td><a href="DeleteUser?u=${fn:escapeXml(u.username)}" class="btn-delete" onclick="return confirm('Are you sure?')">DELETE</a></td>
 			</tr>
 			</c:forEach>
 		</table>
