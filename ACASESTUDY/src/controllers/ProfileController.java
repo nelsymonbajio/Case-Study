@@ -48,7 +48,12 @@ public class ProfileController extends HttpServlet {
 			
 			if(userServ.updateUser(id,userid,username,firstname,middlename,lastname,role,create,update,delete)) {
 				System.out.println("Success");
-				response.sendRedirect(request.getContextPath()+"/Users/");
+				//lowercase the first letter of role for session
+				role = Character.toLowerCase(role.charAt(0)) + role.substring(1);
+				request.getSession().setAttribute("username", username);
+				request.getSession().setAttribute("accessLevel",role);
+				
+				response.sendRedirect(request.getContextPath()+"/Profile/");
 			}else {
 				System.out.println("Update error");
 			}
@@ -60,7 +65,6 @@ public class ProfileController extends HttpServlet {
 			String newpass = request.getParameter("newpass");
 			
 			if(userServ.changePassword(userid,oldpass,newpass)) {
-				System.out.println("Change password successful");
 				response.sendRedirect(request.getContextPath()+"/Profile/");
 			}else {
 				System.out.println("Old Password Incorrect");

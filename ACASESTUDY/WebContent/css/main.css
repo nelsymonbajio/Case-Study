@@ -5,10 +5,12 @@ body {
 	padding: 0px;
 	font-family: sans-serif;
 }
-.mainDiv{
-	width:1000px; 
-	margin:0 auto;
+
+.mainDiv {
+	width: 1000px;
+	margin: 0 auto;
 }
+
 nav {
 	width: 100%;
 	background: #02075d;
@@ -67,30 +69,33 @@ table tr:nth-child(odd) td {
 	width: 400px !important;
 }
 
-.btn-add {
+.btn-update {
 	color: #FFF;
 	background-color: #28a745;
 	border-color: #28a745;
 	display: block;
 	text-decoration: none;
-	padding: 6px 6px 6px 6px;
 	border-top: 1px solid #CCCCCC;
 	border-right: 1px solid #333333;
 	border-bottom: 1px solid #333333;
 	border-left: 1px solid #CCCCCC;
+	text-align: center;
+	padding: 12px;
 }
 
-.btn-update {
-	color: #212529; background-color : #ffc107; border-color : #ffc107;
+.btn-add {
+	color: #FFF;
+	background-color: #02075d;
+	border-color: #ffc107;
 	display: block;
 	text-decoration: none;
-	padding: 6px 6px 6px 6px;
+	padding: 12px;
 	border-top: 1px solid #CCCCCC;
 	border-right: 1px solid #333333;
 	border-bottom: 1px solid #333333;
 	border-left: 1px solid #CCCCCC;
-	background-color: #ffc107;
-	border-color: #ffc107;
+	border-color: #02075d;
+	text-align: center;
 }
 
 .btn-delete {
@@ -99,11 +104,12 @@ table tr:nth-child(odd) td {
 	border-color: #dc3545;
 	display: block;
 	text-decoration: none;
-	padding: 6px 6px 6px 6px;
+	padding: 12px;
 	border-top: 1px solid #CCCCCC;
 	border-right: 1px solid #333333;
 	border-bottom: 1px solid #333333;
 	border-left: 1px solid #CCCCCC;
+	text-align: center;
 }
 
 .align-form {
@@ -123,19 +129,27 @@ table tr:nth-child(odd) td {
 .form1 {
 	margin-bottom: 1rem;
 }
-.wrap{
-	width:80%;
+
+.wrap {
+	width: 80%;
 	margin: 0 auto;
 }
-.left{
-	float:left;
+
+.left {
+	float: left;
 }
-.right{
-	float:right;
+
+.right {
+	float: right;
 }
-.product-tbl table th{
+
+.product-tbl table th {
 	text-align: center;
 	background-color: #cc0000;
 	color: #FFF;
 	padding: 4px 30px 4px 8px;
+}
+
+a{
+	height:15px;
 }

@@ -6,12 +6,12 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Create User</title>
 		<link href="${pageContext.request.contextPath}/css/main.css" type="text/css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/css/profile.css" type="text/css" rel="stylesheet">
 	</head>
 <body>
 	<div class="register" style="margin: 0 auto;">
 		<div class="container">
 			<h1 align="center">REGISTRATION</h1>
-			<br>
 		</div>
 		<form action="Users/RegisterUser" method="POST">
 			<div class="form1">
@@ -46,9 +46,12 @@
 				<input type="checkbox" name="Update" value="Update" id="updatePriv">Update 
 				<input type="checkbox" name="Delete" value="Delete" id="deletePriv">Delete<br>
 			</div>
-			
-			<input class="btn-add" type="submit" name="AddUser" value="REGISTER">
-			<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
+			<div class="col-50">
+				<input class="btn-update" type="submit" name="AddUser" value="REGISTER" style="width:170px !important;">
+			</div>
+			<div class="col-50">
+				<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:90px !important;">CANCEL</a>
+			</div>
 		</form>
 	</div>
 	

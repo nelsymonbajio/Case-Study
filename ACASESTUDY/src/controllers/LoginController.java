@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,18 +13,18 @@ import services.LoginServices;
 import services.UserServices;
 
 public class LoginController extends HttpServlet {
-	
+
 	private LoginServices logserv = new LoginServices();
 	private UserServices userServ = new UserServices();
 	private HttpSession session;
-	
-    public LoginController() {
-        super();
-    }
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+
+	public LoginController() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-    	//Logout Request
+		//Logout Request
 		if(request.getRequestURI().equals(request.getContextPath()+"/Login/Logout"))
 		{
 			request.getSession().invalidate();
@@ -31,10 +33,10 @@ public class LoginController extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		
+
 		logserv.login(request.getParameter("username"), request.getParameter("password"));
 		session = request.getSession();
-		
+
 		//Login Request
 		if(request.getRequestURI().equals(request.getContextPath()+"/Login"))
 		{
@@ -60,12 +62,17 @@ public class LoginController extends HttpServlet {
 			}
 			else if(!logserv.isUserExists())
 			{
-				System.out.println("Incorrect username or password");
-				request.getRequestDispatcher("Login.jsp").forward(request,response);
+				// redirect to login page 
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('User or password incorrect');");
+				out.println("location='Login.jsp';");
+				out.println("</script>");
 			}
 		}
-		
-		
+
+
 	}
 
 }

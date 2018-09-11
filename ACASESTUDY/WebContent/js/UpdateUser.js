@@ -5,7 +5,7 @@ function validateChangepass()
 	
 	if(x==y)
 	{
-		alert("sucess");
+		alert("success");
 		return true;
 	}
 	else

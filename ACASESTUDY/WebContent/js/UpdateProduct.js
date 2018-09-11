@@ -15,7 +15,7 @@ function callType()
 	else{
 		expiryDiv.style.display="block";
 		date.style.display="inline";
-		label.style.display="inline";
+		label.style.display="inline-block";
 		date.required=true;
 	}
 }

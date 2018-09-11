@@ -6,6 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link href="${pageContext.request.contextPath}/css/main.css" type="text/css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/css/profile.css" type="text/css" rel="stylesheet">
 		<title>Update Information</title>
 	</head>
 <body>
@@ -101,10 +102,12 @@
 						</c:otherwise>
 					</c:choose>
 				</div>
-				<div class="form1">
-					<input class="btn-add" type="submit" name="UpdateUser" value="UPDATE">
-					<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
-				</div>
+				<div class="col-50">
+					<input class="btn-update" type="submit" name="UpdateUser" value="UPDATE" onclick="return confirm('Are you sure?')" style="width:170px !important;">
+				</div>		
+				<div class="col-50">
+					<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:90px !important;">CANCEL</a>
+				</div>		
 			</form>
 		</div>
 		<div class="register right">
@@ -125,17 +128,21 @@
 					<input type="password" id="confirm_password"class="align-form" name="confirmpass" required onkeyup='check();' maxlength="16" pattern="^[a-zA-Z0-9]*$">
 					<span id='message'></span>
 				</div>
-				<div class="form1">
+				<div class="col-50">
 					<input type="hidden" name="userID" value="${userInfo[0].userid}">
-					<input class="btn-add" type="submit" name="ChangePassUser" value="Change Password" required onkeyup='check();'>
-					<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:70px !important;">CANCEL</a>
+					<input class="btn-update" type="submit" name="ChangePassUser" value="Change Password" required onkeyup='check();' style="width:170px !important;">
+				</div>	
+				<div class="col-50">
+					<a href="${pageContext.request.contextPath}/Users/" class="btn-delete" style="width:90px !important;">CANCEL</a>
 				</div>
 			</form>
-			
+			<br>
+			<br>
+			<br>
 			<form action="ResetUser" method="POST" onsubmit="return confirm('Are you sure you want to reset this account?')">
 				<h1 align="center">Reset Account Password</h1>
 				<input type="hidden" name="userID" value="${userInfo[0].userid}">
-				<input type="submit" value="RESET ACCOUNT" class="btn-delete">
+				<input type="submit" value="RESET ACCOUNT" class="btn-delete" style="width:170px !important;">
 			</form>
 		</div>
 	</div>

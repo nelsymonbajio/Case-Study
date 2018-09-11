@@ -58,9 +58,9 @@ public class ProductController extends HttpServlet {
 			double price = Double.parseDouble(request.getParameter("price"));
 			String prodType = request.getParameter("productType");
 			String expDate = request.getParameter("expiryDate");
-			System.out.println(expDate);
+			
 			if(prodServ.addProduct(prodname, prodcode, prodType, qty, price, expDate)) {
-				response.sendRedirect("/ACASESTUDY/Products/");
+				response.sendRedirect(request.getContextPath()+"/Products/");
 			}else {
 				System.out.println("Failed");
 			}
@@ -77,7 +77,7 @@ public class ProductController extends HttpServlet {
 			String expDate = request.getParameter("expiryDate");
 
 			if(prodServ.updateProduct(id,prodname, prodcode, prodType, qty, price, expDate)) {
-				response.sendRedirect("/ACASESTUDY/Products/");
+				response.sendRedirect(request.getContextPath()+"/Products/");
 			}else {
 				System.out.println("Failed");
 			}

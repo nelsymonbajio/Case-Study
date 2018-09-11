@@ -60,7 +60,7 @@ public class UserController extends HttpServlet {
 					role,request.getParameter("Create"),
 					request.getParameter("Update"),
 					request.getParameter("Delete"))) {
-				System.out.println("Add Successful");
+				//System.out.println("Add Successful");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
 				response.sendRedirect(request.getContextPath()+"/AddUserForm.jsp");
@@ -75,10 +75,10 @@ public class UserController extends HttpServlet {
 			String newpass = request.getParameter("newpass");
 
 			if(userServ.changePassword(userid,oldpass,newpass)) {
-				System.out.println("Change password successful");
+				//System.out.println("Change password successful");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
-				System.out.println("Old Password Incorrect");
+				//System.out.println("Old Password Incorrect");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}
 
@@ -98,7 +98,7 @@ public class UserController extends HttpServlet {
 			String delete = request.getParameter("Delete");
 			
 			if(userServ.updateUser(id,userid,username,firstname,middlename,lastname,role,create,update,delete)) {
-				System.out.println("Success");
+				//System.out.println("Success");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
 				System.out.println("Update error");

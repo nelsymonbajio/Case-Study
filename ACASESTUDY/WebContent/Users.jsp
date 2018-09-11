@@ -14,8 +14,11 @@
 	<jsp:include page="mainHeader.jsp"/>
 	<div class="mainDiv">
 		<div>
-			<div><h2>USERS</h2></div>
-			<div><a href="AddUserForm" class="btn-add" style="float:right;">ADD USER</a></div>
+			<h2>USERS</h2>
+			<div>
+				<a href="AddUserForm" class="btn-add" style="float:right;">ADD USER</a>
+				<br>
+			</div>
 		</div>
 		<br><br>
 		<table>
@@ -27,7 +30,7 @@
 				<th>Middle Name</th>
 				<th>Last Name</th>
 				<th>Role</th>
-				<th colspan="2">Action</th>
+				<th colspan="2">Controls</th>
 			</tr>
 			<c:forEach var="u" items="${usersList}">
 			<tr>

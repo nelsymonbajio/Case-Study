@@ -6,6 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.request.contextPath}/css/profile.css" rel="stylesheet" type="text/css">
 	<title>Profile</title>
 </head>	
 <body>
@@ -19,32 +20,55 @@
 	</c:choose>
 	<div class="mainDiv">
 		<h2>Profile Information</h2>
-	
-		<div>
-			<h3>User ID</h3>
-			<pre>${userInfo[0].userid}</pre>
-			
-			<h3>Username</h3>
-			<pre>${userInfo[0].username}</pre>
-			
-			<h3>Name</h3>
-			<pre>${userInfo[0].firstname} ${userInfo[0].middlename} ${userInfo[0].lastname}</pre>
-			
-			<h3>Role</h3>
-			<pre>${userInfo[0].role}</pre>
-			
-			<h3>Privileges</h3>
-			<c:if test="${userInfo[0].canCreate==true}">
-				<pre>Create</pre>
-			</c:if>
-			<c:if test="${userInfo[0].canUpdate==true}">
-				<pre>Update</pre>
-			</c:if>
-			<c:if test="${userInfo[0].canDelete==true}">
-				<pre>Delete</pre>
-			</c:if>
-		</div>
-		<a href="UpdateProfile" class="btn-update" style="width:150px !important;">Update Information</a>
+		<br>
+			<div class="col-25">
+				<label for="userid"><b>User ID</b></label>
+				<br>
+			</div>
+			<div class="col-75">
+				<input type="text" name="userid" value="${userInfo[0].userid}" disabled>
+			</div>
+			<div class="col-25">
+				<label for="username"><b>Username</b></label>
+			</div>
+			<div class="col-75">
+				<input type="text" name="username" value="${userInfo[0].username}" disabled>
+			</div>
+			<div class="col-25">
+				<label><b>Name</b></label>
+			</div>
+			<div class="col-75">
+				<input type="text" value="${userInfo[0].firstname} ${userInfo[0].middlename} ${userInfo[0].lastname}" disabled>
+			</div>
+			<div class="col-25">
+				<label><b>Role</b></label>
+			</div>
+			<div class="col-75">
+				<input type="text" value="${userInfo[0].role}" disabled>
+			</div>
+			<div class="col-25">
+				<label><b>Privileges</b></label>
+			</div>
+			<div class="col-75">
+				<c:if test="${userInfo[0].canCreate==true}">
+					<input type="text" value="Create" disabled>
+				</c:if>
+				<c:if test="${userInfo[0].canUpdate==true}">
+					<input type="text" value="Update" disabled>
+				</c:if>
+				<c:if test="${userInfo[0].canDelete==true}">
+					<input type="text" value="Delete" disabled>
+				</c:if>
+				<c:if test="${userInfo[0].canCreate==false && userInfo[0].canUpdate==false && userInfo[0].canDelete==false}">
+					<input type="text" value="No Privilege" disabled>
+				</c:if>
+			</div>
+			<div class="col-90">
+			</div>
+			<div class="col-10">
+				<a href="UpdateProfile" class="btn-update" style="width:200px !important;">UPDATE INFORMATION</a>
+			</div>
+		
 	</div>
 </body>
 </html>

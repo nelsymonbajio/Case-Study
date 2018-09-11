@@ -27,8 +27,8 @@ public class UserDAO extends DbConnection
 			ps.setString(6, user.getLastname());
 			ps.setString(7, user.getRole());
 			ps.setInt(8, user.isCanCreate()? 1 : 0);
-			ps.setInt(9, user.isCanUpdate()? 1 : 0);
-			ps.setInt(10, user.isCanDelete()? 1 : 0);
+			ps.setInt(9, user.isCanDelete()? 1 : 0);
+			ps.setInt(10, user.isCanUpdate()? 1 : 0);
 			
 			ps.executeUpdate();
 			ps.close();

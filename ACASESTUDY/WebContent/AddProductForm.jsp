@@ -6,43 +6,63 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>New Product</title>
 	<link href="${pageContext.request.contextPath}/css/main.css" type="text/css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/product.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div class="register" style="margin: 0 auto;">
-		<div class="container">
-			<h1 align="center">New Product</h1>
-			<br>
-		</div>
+	<div class="mainDiv">
+		<h1 align="center">New Product</h1>
+		<br>
 		<form action="Products/AddProduct" method="POST">
-			<div class="form1">
-				<label for=prodcode>Product Code</label>
-				<input type="text" class="align-form" name="prodcode" required placeholder="Type Product Code" pattern="^[a-zA-Z0-9]*$" maxlength="20">
-			</div>
-			<div class="form1">
-				<label for="prodname">Product Name</label>
-				<input type="text" class="align-form" name="prodname" required placeholder="Type Product Name" pattern="^[a-zA-Z0-9]*$" maxlength="30">
-			</div>
-			<div class="form1">
-				<label for="quantity">Quantity</label>
-				<input type="number" class="align-form" name="quantity" required placeholder="Type Quantity" maxlength="11">
-			</div>
-			<div class="form1">
-				<label for="price">Price</label>
-				<input type="number" class="align-form" name="price" required placeholder="Type Price" step=".01">
-			</div>
-			<div class="form1">
-				<label>Product Type</label>
-				<select name="productType" id="selectType" onclick="callType()">
+				<div class="col-25">
+					<label for=prodcode>Product Code</label>
+				</div>
+				<div class="col-75">
+					<input type="text" class="align-form" name="prodcode" required placeholder="Type Product Code" pattern="^[a-zA-Z0-9]*$" maxlength="20">
+				</div>
+				<div class="col-25">
+					<label for="prodname">Product Name</label>
+				</div>
+				<div class="col-75">
+					<input type="text" class="align-form" name="prodname" required placeholder="Type Product Name" pattern="^[a-zA-Z 0-9]*$" maxlength="30">
+				</div>
+				<div class="col-25">
+					<label for="quantity">Quantity</label>
+				</div>
+				<div class="col-75">
+					<input type="number" class="align-form" name="quantity" required placeholder="Type Quantity" maxlength="11">
+				</div>
+				<div class="col-25">
+					<label for="price">Price</label>
+				</div>
+				<div class="col-75">
+					<input type="number" class="align-form" name="price" required placeholder="Type Price" step=".01">
+				</div>
+				<div class="col-25">
+					<label>Product Type</label>
+				</div>
+				<div class="col-75">
+					<select name="productType" id="selectType" onclick="callType()">
 					<option value="Perishable">Perishable</option>
 					<option value="Non Perishable">Non Perishable</option>
 				</select>
-			</div>
-			<div class="form1" id="expiryDiv">
-				<label>Expiration Date</label>
-				<input type="date" name="expiryDate" id="dateId" required>
-			</div>
-			<input class="btn-add" type="submit" name="AddProduct" value="SUBMIT">
-			<a href="${pageContext.request.contextPath}/Products/" class="btn-delete" style="width:70px !important;">CANCEL</a>
+				</div>
+				<div class="form1" id="expiryDiv">
+					<div class="col-25">
+						<label>Expiration Date</label>
+					</div>
+					<div class="col-75">
+						<input type="date" name="expiryDate" id="dateId" required>
+					</div>
+				</div>
+				<div class="col-80">
+				</div>
+				<div class="col-10">
+					<input class="btn-update" type="submit" name="AddProduct" value="SUBMIT">
+				</div>
+				<div class="col-10">
+					<a href="${pageContext.request.contextPath}/Products/" class="btn-delete" style="height:14px !important;">CANCEL</a>
+				</div>
+			
 		</form>
 	</div>
 	

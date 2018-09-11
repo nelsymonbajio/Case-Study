@@ -37,6 +37,10 @@ public class JspFilesFilter implements Filter {
 			{
 				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Profile/");
 			}
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Login.jsp"))
+			{
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/AdminMain.jsp");
+			}
 			else {
 				chain.doFilter(request, response);
 			}
@@ -67,6 +71,10 @@ public class JspFilesFilter implements Filter {
 			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/UpdateProductForm.jsp")&&Boolean.FALSE.equals(servletRequest.getSession().getAttribute("updatePriv")))
 			{
 				servletResponse.sendRedirect(servletRequest.getContextPath()+"/Products/");
+			}
+			else if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Login.jsp"))
+			{
+				servletResponse.sendRedirect(servletRequest.getContextPath()+"/UserMain.jsp");
 			}
 			else {
 				chain.doFilter(request,response);
