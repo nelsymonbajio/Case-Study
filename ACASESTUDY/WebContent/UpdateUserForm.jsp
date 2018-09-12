@@ -41,7 +41,7 @@
 				
 				<div class="form1">
 					<label>Account Role</label>
-					<select name="role" id="selectRole" onclick="priv()">
+					<select name="role" id="selectRole" onchange="priv()">
 						<c:choose>
 						  <c:when test="${userInfo[0].role=='Admin'}">
 								<option value="Admin" selected>Admin</option>
@@ -58,11 +58,11 @@
 					<c:choose>
 						<c:when test="${userInfo[0].role=='Admin'}">
 							<div id="privDiv">
-								<label id="lblCreate" style="display:none;">Create</label>
+								<label id="lblCreate" style="display:none;">CREATE</label>
 								<input type="checkbox" name="Create" value="Create" checked="checked" id="createPriv" style="display:none;">
-								<label id="lblUpdate" style="display:none;">Update</label>
+								<label id="lblUpdate" style="display:none;">UPDATE</label>
 								<input type="checkbox" name="Update" value="Update" checked="checked" id="updatePriv" style="display:none;">
-								<label id="lblDelete" style="display:none;">Delete</label>
+								<label id="lblDelete" style="display:none;">DELETE</label>
 								<input type="checkbox" name="Delete" value="Delete" checked="checked" id="deletePriv" style="display:none;">
 							</div>
 						</c:when>
@@ -70,31 +70,31 @@
 							<div id="privDiv">
 								<c:choose>
 									<c:when test="${userInfo[0].canCreate==true}">
-										<label id="lblCreate">Create</label>
+										<label id="lblCreate">CREATE</label>
 										<input type="checkbox" name="Create" value="Create" checked="checked" id="createPriv">
 									</c:when>
 									<c:otherwise>
-										<label id="lblCreate">Create</label>
+										<label id="lblCreate">CREATE</label>
 										<input type="checkbox" name="Create" value="Create" id="createPriv">
 									</c:otherwise>
 								</c:choose> 
 								<c:choose>
 									<c:when test="${userInfo[0].canUpdate==true}">
-										<label id="lblUpdate">Update</label>
+										<label id="lblUpdate">UPDATE</label>
 										<input type="checkbox" name="Update" value="Update" checked="checked" id="updatePriv">
 									</c:when>
 									<c:otherwise>
-										<label id="lblUpdate">Update</label>
+										<label id="lblUpdate">UPDATE</label>
 										<input type="checkbox" name="Update" value="Create" id="updatePriv">
 									</c:otherwise>
 								</c:choose> 
 								<c:choose>
 									<c:when test="${userInfo[0].canDelete==true}">
-										<label id="lblDelete">Delete</label>
+										<label id="lblDelete">DELETE</label>
 										<input type="checkbox" name="Delete" value="Delete" checked="checked" id="deletePriv">
 									</c:when>
 									<c:otherwise>
-										<label id="lblDelete">Delete</label>
+										<label id="lblDelete">DELETE</label>
 										<input type="checkbox" name="Delete" value="Delete" id="deletePriv">
 									</c:otherwise>
 								</c:choose> 

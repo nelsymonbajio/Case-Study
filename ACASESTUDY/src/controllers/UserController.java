@@ -13,7 +13,8 @@ public class UserController extends HttpServlet {
 		super();
 	}
 	private UserServices userServ = new UserServices();
-
+	
+	/** URL REQUEST MAPPING IN USER SERVLET */  
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
@@ -101,7 +102,9 @@ public class UserController extends HttpServlet {
 				//System.out.println("Success");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
-				System.out.println("Update error");
+				System.out.println("Update Failed");
+				System.out.println("Try again");
+				response.sendRedirect(request.getContextPath()+"/Users/");
 			}
 		}
 		//RESET USER PASSWORD

@@ -1,5 +1,7 @@
 package dao;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -11,7 +13,7 @@ public class UserDAO extends DbConnection
 	private Statement stmt;
 	private ResultSet rs;
 	private PreparedStatement ps;
-
+	
 	public boolean createUser(User user)
 	{
 		con = this.getConnection();
@@ -21,7 +23,7 @@ public class UserDAO extends DbConnection
 			ps=con.prepareStatement(query);
 			ps.setInt(1, user.getUserid());
 			ps.setString(2, user.getUsername());
-			ps.setString(3,"123");
+			ps.setString(3, encryptData("123"));
 			ps.setString(4, user.getFirstname());
 			ps.setString(5, user.getMiddlename());
 			ps.setString(6, user.getLastname());
@@ -97,7 +99,7 @@ public class UserDAO extends DbConnection
 	{
 		con = this.getConnection();
 		int c=0, u=0, d=0;
-		
+		//set privileges
 		if(role.equalsIgnoreCase("admin"))
 		{
 			c=1;
@@ -132,7 +134,10 @@ public class UserDAO extends DbConnection
 			ps.close();
 			
 			return true;
-		}catch(SQLException e) {
+		}catch(SQLIntegrityConstraintViolationException f) {
+			return false;
+		}
+		catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			this.closeConnection(con);
@@ -142,13 +147,14 @@ public class UserDAO extends DbConnection
 	public boolean changePassword(String userid,String oldpass, String newpass)
 	{
 		con = this.getConnection();
+		
 		String query1 = "SELECT * FROM users WHERE userid= ? and password = ?";
-		String query2 = "UPDATE users SET password='"+newpass+"' WHERE userid="+userid+"";
+		String query2 = "UPDATE users SET password='"+encryptData(newpass)+"' WHERE userid="+userid+"";
 
 		try {
 			ps=con.prepareStatement(query1);
 			ps.setString(1, userid);
-			ps.setString(2, oldpass);
+			ps.setString(2, encryptData(oldpass));
 			rs=ps.executeQuery();
 			while(rs.next())
 			{
@@ -227,7 +233,7 @@ public class UserDAO extends DbConnection
 	public void resetUser(String userid) 
 	{
 		con = this.getConnection();
-		String query = "UPDATE users SET password= '123' WHERE userid= ?";
+		String query = "UPDATE users SET password= '"+encryptData("123")+"' WHERE userid= ?";
 		try {
 			ps = con.prepareStatement(query);
 			ps.setString(1, userid);
@@ -238,5 +244,22 @@ public class UserDAO extends DbConnection
 		}finally {
 			this.closeConnection(con);
 		}
+	}
+	public String encryptData(String data)
+	{
+		StringBuffer encrypted = null;
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(data.getBytes());
+			byte[] digest = md.digest();
+			encrypted = new StringBuffer();
+			for (byte b : digest) {
+				encrypted.append(String.format("%02x", b & 0xff));
+			}
+
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		}
+		return encrypted.toString();
 	}
 }

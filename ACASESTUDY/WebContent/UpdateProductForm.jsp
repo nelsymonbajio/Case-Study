@@ -45,7 +45,7 @@
 					<label>Product Type</label>
 			</div>
 			<div class="col-75">
-				<select name="productType" id="selectType" onclick="callType()">
+				<select name="productType" id="selectType" onchange="callType()">
 					<c:choose>
 						<c:when test="${prodInfo[0].productType=='Perishable'}">
 							<option value="Perishable" selected>Perishable</option>

@@ -1,5 +1,7 @@
 package dao;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 
 public class LoginDAO extends DbConnection
@@ -14,13 +16,14 @@ public class LoginDAO extends DbConnection
 	public void searchUser(String username, String password)
 	{
 		con = super.getConnection();
+		
 		String query="SELECT * FROM users WHERE username = ? AND password = ?";
 		
 		try {
 			
 			ps = con.prepareStatement(query);
 			ps.setString(1, username);
-			ps.setString(2,password);
+			ps.setString(2,encryptData(password));
 			rs = ps.executeQuery();
 			
 			while(rs.next())
@@ -55,5 +58,21 @@ public class LoginDAO extends DbConnection
 	public void setUserExists(boolean userExists) {
 		this.userExists = userExists;
 	}
-	
+	public String encryptData(String data)
+	{
+		StringBuffer encrypted = null;
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(data.getBytes());
+			byte[] digest = md.digest();
+			encrypted = new StringBuffer();
+			for (byte b : digest) {
+				encrypted.append(String.format("%02x", b & 0xff));
+			}
+
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		}
+		return encrypted.toString();
+	}
 }

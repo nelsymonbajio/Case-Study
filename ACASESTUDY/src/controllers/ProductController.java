@@ -15,6 +15,7 @@ public class ProductController extends HttpServlet {
 	public ProductController() {
 		super();
 	}
+	/** URL REQUEST MAPPING IN PRODUCT SERVLET */  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 

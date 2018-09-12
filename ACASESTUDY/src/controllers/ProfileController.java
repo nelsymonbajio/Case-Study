@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,7 @@ public class ProfileController extends HttpServlet {
 	public ProfileController() {
 		super();
 	}
-
+	/** URL REQUEST MAPPING IN PROFILE SERVLET */  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		if(request.getRequestURI().equals(request.getContextPath()+"/Profile/"))
@@ -46,16 +48,21 @@ public class ProfileController extends HttpServlet {
 			String update = request.getParameter("Update");
 			String delete = request.getParameter("Delete");
 			
+			//check null value of select option
+			if(role==null)
+				role="User";
+			
 			if(userServ.updateUser(id,userid,username,firstname,middlename,lastname,role,create,update,delete)) {
-				System.out.println("Success");
 				//lowercase the first letter of role for session
 				role = Character.toLowerCase(role.charAt(0)) + role.substring(1);
 				request.getSession().setAttribute("username", username);
 				request.getSession().setAttribute("accessLevel",role);
-				
 				response.sendRedirect(request.getContextPath()+"/Profile/");
+				
 			}else {
-				System.out.println("Update error");
+				alertMessage("Update Failed",response,request.getContextPath()+"/Profile/UpdateProfile");
+//				System.out.println("Update error");
+//				response.sendRedirect(request.getContextPath()+"/Profile/");
 			}
 		}
 		else if(request.getRequestURI().equals(request.getContextPath()+"/Profile/ChangePassword"))
@@ -67,10 +74,18 @@ public class ProfileController extends HttpServlet {
 			if(userServ.changePassword(userid,oldpass,newpass)) {
 				response.sendRedirect(request.getContextPath()+"/Profile/");
 			}else {
-				System.out.println("Old Password Incorrect");
-				response.sendRedirect(request.getContextPath()+"/Profile/UpdateProfile");
+				alertMessage("Old Password Incorrect",response,request.getContextPath()+"/Profile/UpdateProfile");
 			}
 		}
+	}
+	public void alertMessage(String message,HttpServletResponse response,String location) throws IOException
+	{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('"+message+"');");
+		out.println("location='"+location+"';");
+		out.println("</script>");
 	}
 
 }

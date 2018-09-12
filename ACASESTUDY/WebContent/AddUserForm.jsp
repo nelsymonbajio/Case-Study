@@ -36,15 +36,18 @@
 			</div>
 			<div class="form1">
 				<label>Account Role</label>
-				<select name="role" id="selectRole" onclick="priv()">
+				<select name="role" id="selectRole" onchange="priv()">
 					<option value="User">User</option>
 					<option value="Admin">Admin</option>
 				</select>
 			</div>
 			<div class="form1" id="privDiv">
-				<input type="checkbox" name="Create" value="Create" id="createPriv">Create
-				<input type="checkbox" name="Update" value="Update" id="updatePriv">Update 
-				<input type="checkbox" name="Delete" value="Delete" id="deletePriv">Delete<br>
+				<label for="Create">CREATE</label>
+				<input type="checkbox" name="Create" value="Create" id="createPriv">
+				<label for="Create">UPDATE</label>
+				<input type="checkbox" name="Update" value="Update" id="updatePriv">
+				<label for="Create">DELETE</label> 
+				<input type="checkbox" name="Delete" value="Delete" id="deletePriv"><br>
 			</div>
 			<div class="col-50">
 				<input class="btn-update" type="submit" name="AddUser" value="REGISTER" style="width:170px !important;">

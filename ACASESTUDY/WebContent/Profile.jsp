@@ -22,32 +22,32 @@
 		<h2>Profile Information</h2>
 		<br>
 			<div class="col-25">
-				<label for="userid"><b>User ID</b></label>
+				<label for="userid">USER ID</label>
 				<br>
 			</div>
 			<div class="col-75">
 				<input type="text" name="userid" value="${userInfo[0].userid}" disabled>
 			</div>
 			<div class="col-25">
-				<label for="username"><b>Username</b></label>
+				<label for="username">USERNAME</label>
 			</div>
 			<div class="col-75">
 				<input type="text" name="username" value="${userInfo[0].username}" disabled>
 			</div>
 			<div class="col-25">
-				<label><b>Name</b></label>
+				<label>NAME</label>
 			</div>
 			<div class="col-75">
 				<input type="text" value="${userInfo[0].firstname} ${userInfo[0].middlename} ${userInfo[0].lastname}" disabled>
 			</div>
 			<div class="col-25">
-				<label><b>Role</b></label>
+				<label>ROLE</label>
 			</div>
 			<div class="col-75">
 				<input type="text" value="${userInfo[0].role}" disabled>
 			</div>
 			<div class="col-25">
-				<label><b>Privileges</b></label>
+				<label>PRIVILEGES</label>
 			</div>
 			<div class="col-75">
 				<c:if test="${userInfo[0].canCreate==true}">
@@ -68,7 +68,6 @@
 			<div class="col-10">
 				<a href="UpdateProfile" class="btn-update" style="width:200px !important;">UPDATE INFORMATION</a>
 			</div>
-		
 	</div>
 </body>
 </html>

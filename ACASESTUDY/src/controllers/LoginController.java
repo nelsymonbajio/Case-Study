@@ -21,7 +21,7 @@ public class LoginController extends HttpServlet {
 	public LoginController() {
 		super();
 	}
-
+	/** URL REQUEST MAPPING IN LOGIN SERVLET */  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		//Logout Request
@@ -36,7 +36,7 @@ public class LoginController extends HttpServlet {
 
 		logserv.login(request.getParameter("username"), request.getParameter("password"));
 		session = request.getSession();
-
+		
 		//Login Request
 		if(request.getRequestURI().equals(request.getContextPath()+"/Login"))
 		{
@@ -62,17 +62,23 @@ public class LoginController extends HttpServlet {
 			}
 			else if(!logserv.isUserExists())
 			{
-				// redirect to login page 
-				response.setContentType("text/html;charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('User or password incorrect');");
-				out.println("location='Login.jsp';");
-				out.println("</script>");
+				// redirect to login page
+				String message = "Username or Password incorrect";
+				String location ="Login.jsp";
+				alertMessage(message,response,location);
 			}
 		}
 
 
+	}
+	public void alertMessage(String message,HttpServletResponse response,String location) throws IOException
+	{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('"+message+"');");
+		out.println("location='"+location+"';");
+		out.println("</script>");
 	}
 
 }

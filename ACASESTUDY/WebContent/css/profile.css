@@ -38,4 +38,8 @@ input[type=text],input[type=password],input[type=number], select, textarea {
 }
 label{
 	display:inline-block;
+	font-weight:bold;
+}
+a{
+	height:15px;
 }

@@ -41,7 +41,7 @@
 					<label>Product Type</label>
 				</div>
 				<div class="col-75">
-					<select name="productType" id="selectType" onclick="callType()">
+					<select name="productType" id="selectType" onchange="callType()">
 					<option value="Perishable">Perishable</option>
 					<option value="Non Perishable">Non Perishable</option>
 				</select>

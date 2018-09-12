@@ -39,7 +39,6 @@ public class UserServices
 		}
 		else 
 		{
-			System.out.println("username or userid already exists");
 			return false;
 		}
 
@@ -53,6 +52,7 @@ public class UserServices
 		return userDAO.getAllUsers();
 	}
 	public boolean updateUser(String id,String userid,String username,String firstname,String middlename,String lastname,String role,String create,String update,String delete) {
+		
 		return userDAO.updateUser(id,userid,username,firstname,middlename,lastname,role,create,update,delete);
 	}
 	public ArrayList<User> getUserInfo(String username)

@@ -43,7 +43,7 @@
 					<label>Account Role</label>
 						<c:choose>
 							<c:when test="${userInfo[0].role=='Admin'}">
-								<select name="role" id="selectRole" onclick="priv()">
+								<select name="role" id="selectRole" onchange="priv()">
 									<option value="Admin" selected>Admin</option>
 									<option value="User">User</option>
 								</select>
