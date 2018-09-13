@@ -25,6 +25,7 @@
 		</div>
 		<br><br>
 		<table id="usersTable">
+		<col width="45">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -55,6 +56,8 @@
 			</tbody>
 		</table>
 	</div>
+	<br><br><br><br><br>
+			
 <script src="${pageContext.request.contextPath}/js/tableSearch.js"></script>
 </body>
 </html>

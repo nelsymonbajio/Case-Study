@@ -1,11 +1,11 @@
-package dao;
+package com.nel.dao;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 
-import models.User;
+import com.nel.models.User;
 
 public class UserDAO extends DbConnection
 {

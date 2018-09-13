@@ -1,4 +1,4 @@
-package models;
+package com.nel.models;
 
 import java.util.Date;
 
@@ -10,15 +10,8 @@ public class Product
 	private double price;
 	private int qty;
 	private String productType;
-	private Date arrivalDate;
 	private Date expiryDate;
 	
-	public Date getArrivalDate() {
-		return arrivalDate;
-	}
-	public void setArrivalDate(Date arrivalDate) {
-		this.arrivalDate = arrivalDate;
-	}
 	public Date getExpiryDate() {
 		return expiryDate;
 	}

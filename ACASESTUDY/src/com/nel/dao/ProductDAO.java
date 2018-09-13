@@ -1,4 +1,4 @@
-package dao;
+package com.nel.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import models.Product;
-import models.User;
+import com.nel.models.Product;
+import com.nel.models.User;
 
 public class ProductDAO extends DbConnection{
 

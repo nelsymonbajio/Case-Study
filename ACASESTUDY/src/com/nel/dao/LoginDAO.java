@@ -1,4 +1,4 @@
-package dao;
+package com.nel.dao;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -15,7 +15,7 @@ public class LoginDAO extends DbConnection
 	
 	public void searchUser(String username, String password)
 	{
-		con = super.getConnection();
+		con = this.getConnection();
 		
 		String query="SELECT * FROM users WHERE username = ? AND password = ?";
 		
@@ -35,11 +35,12 @@ public class LoginDAO extends DbConnection
 				}
 			}
 			rs.close();
-			this.closeConnection(con);
+			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			this.closeConnection(con);
 		}
 	}
 

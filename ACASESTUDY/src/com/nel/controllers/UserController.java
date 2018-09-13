@@ -1,12 +1,14 @@
-package controllers;
+package com.nel.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import services.UserServices;
+import com.nel.services.UserServices;
 
 public class UserController extends HttpServlet {
 	public UserController() {
@@ -64,7 +66,8 @@ public class UserController extends HttpServlet {
 				//System.out.println("Add Successful");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
-				response.sendRedirect(request.getContextPath()+"/AddUserForm.jsp");
+				alertMessage("Registration Failed, Try again with different userid or username"
+						,response,request.getContextPath()+"/AddUserForm.jsp");
 			}
 
 		}
@@ -79,8 +82,9 @@ public class UserController extends HttpServlet {
 				//System.out.println("Change password successful");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
+				alertMessage("Old Password Incorrect",response,request.getContextPath()+"/Users/");
 				//System.out.println("Old Password Incorrect");
-				response.sendRedirect(request.getContextPath()+"/Users/");
+				//response.sendRedirect(request.getContextPath()+"/Users/");
 			}
 
 		}
@@ -102,9 +106,11 @@ public class UserController extends HttpServlet {
 				//System.out.println("Success");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
-				System.out.println("Update Failed");
-				System.out.println("Try again");
-				response.sendRedirect(request.getContextPath()+"/Users/");
+//				System.out.println("Update Failed");
+//				System.out.println("Try again");
+//				response.sendRedirect(request.getContextPath()+"/Users/");
+				alertMessage("Update Failed try different userid or username",response,request.getContextPath()+"/Users/");
+				
 			}
 		}
 		//RESET USER PASSWORD
@@ -114,5 +120,14 @@ public class UserController extends HttpServlet {
 			userServ.resetUser(userid);
 			response.sendRedirect(request.getContextPath()+"/Users/");
 		}
+	}
+	public void alertMessage(String message,HttpServletResponse response,String location) throws IOException
+	{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('"+message+"');");
+		out.println("location='"+location+"';");
+		out.println("</script>");
 	}
 }

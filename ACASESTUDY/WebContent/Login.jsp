@@ -12,10 +12,10 @@
 		<div class="login-wrap">
 			<h2 class="login-header">LOGIN</h2>
 			<label for="username"><b>Username</b></label> 
-			<input type="text" name="username" placeholder="Type Username" required> 
+			<input type="text" name="username" placeholder="Type Username" required/> 
 			<label for="password"><b>Password</b></label> 
-			<input type="password" name="password" placeholder="Type Password" required>
-			<input type="submit" value="SUBMIT" class="btn-login">
+			<input type="password" name="password" placeholder="Type Password" required/>
+			<input type="submit" value="SUBMIT" class="btn-login"/>
 		</div>
 	</form>
 </body>

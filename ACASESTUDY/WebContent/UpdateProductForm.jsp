@@ -16,30 +16,30 @@
 			<br>
 		</div>
 		<form action="UpdateProduct" method="POST">
-			<input type="hidden" name="prodid" value="${prodInfo[0].prodid}">
+			<input type="hidden" name="prodid" value="${prodInfo[0].prodid}"/>
 			<div class="col-25">
 				<label for=prodcode>Product Code</label>
 			</div>
 			<div class="col-75">
-				<input type="text" class="align-form" name="prodcode" required placeholder="Type Product Code" value="${prodInfo[0].prodCode}" pattern="^[a-zA-Z0-9]*$" maxlength="20">
+				<input type="text" class="align-form" name="prodcode" required placeholder="Type Product Code" value="${prodInfo[0].prodCode}" pattern="^[a-zA-Z0-9]*$" maxlength="20"/>
 			</div>
 			<div class="col-25">
 				<label for="prodname">Product Name</label>
 			</div>
 			<div class="col-75">
-				<input type="text" class="align-form" name="prodname" required placeholder="Type Product Name" value="${prodInfo[0].name}" pattern="^[a-zA-Z 0-9]*$" maxlength="30">
+				<input type="text" class="align-form" name="prodname" required placeholder="Type Product Name" value="${prodInfo[0].name}" pattern="^[a-zA-Z 0-9]*$" maxlength="30"/>
 			</div>
 			<div class="col-25">
 				<label for="quantity">Quantity</label>
 			</div>
 			<div class="col-75">
-				<input type="number" class="align-form" name="quantity" required placeholder="Type Quantity" value="${prodInfo[0].qty}" maxlength="11">
+				<input type="number" class="align-form" name="quantity" required placeholder="Type Quantity" value="${prodInfo[0].qty}" maxlength="11"/>
 			</div>
 			<div class="col-25">
 				<label for="price">Price</label>
 			</div>
 			<div class="col-75">
-				<input type="number" class="align-form" name="price" required placeholder="Type Price" value="${prodInfo[0].price}" step=".01">
+				<input type="number" class="align-form" name="price" required placeholder="Type Price" value="${prodInfo[0].price}" step=".01"/>
 			</div>
 			<div class="col-25">
 					<label>Product Type</label>
@@ -66,7 +66,7 @@
 							<label id="label" style="display:none;">Expiration Date</label>
 						</div>
 						<div class="col-75">
-							<input type="date" name="expiryDate" id="dateId" style="display:none;" value="">
+							<input type="date" name="expiryDate" id="dateId" style="display:none;" value=""/>
 						</div>
 					</c:when>
 					<c:otherwise>
@@ -74,7 +74,7 @@
 							<label id="label">Expiration Date</label>
 						</div>
 						<div class="col-75">
-							<input type="date" name="expiryDate" id="dateId" required value="${prodInfo[0].expiryDate}">
+							<input type="date" name="expiryDate" id="dateId" required value="${prodInfo[0].expiryDate}"/>
 						</div>
 					</c:otherwise>
 				</c:choose>
@@ -82,7 +82,7 @@
 			<div class="col-80">
 			</div>
 			<div class="col-10">
-				<input class="btn-update" type="submit" name="AddProduct" value="UPDATE">
+				<input class="btn-update" type="submit" name="AddProduct" value="UPDATE"/>
 			</div>
 			<div class="col-10">
 				<a href="${pageContext.request.contextPath}/Products/" class="btn-delete" style="height:14px !important;">CANCEL</a>

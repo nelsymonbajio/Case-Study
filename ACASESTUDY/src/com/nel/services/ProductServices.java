@@ -1,11 +1,9 @@
-package services;
+package com.nel.services;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
-import dao.ProductDAO;
-import models.Product;
+import com.nel.dao.ProductDAO;
+import com.nel.models.Product;
 
 public class ProductServices {
 	
@@ -13,8 +11,9 @@ public class ProductServices {
 	
 	public boolean addProduct(String prodname,String prodcode,String prodtype,int qty, double price,String expdate)
 	{
-		if(expdate.equals(""))
+		if(expdate.equals("")||expdate==null)
 			expdate=null;
+		
 		return prodDAO.addProduct(prodname,prodcode,prodtype,qty,price,expdate);
 	}
 	public ArrayList<Product> retrieveAllProducts()
@@ -31,8 +30,9 @@ public class ProductServices {
 	}
 	public boolean updateProduct(String id,String prodname, String prodcode, String prodType, int qty, double price, String expDate) 
 	{
-		if(expDate.equals("")||expDate==null||expDate.equals("0000-00-00"))
+		if(expDate.equals("")||expDate==null)
 			expDate=null;
+		
 		return prodDAO.updateProduct(id,prodname,prodcode,prodType,qty,price,expDate);
 	}
 

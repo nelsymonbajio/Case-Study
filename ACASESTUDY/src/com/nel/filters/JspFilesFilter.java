@@ -1,4 +1,4 @@
-package filters;
+package com.nel.filters;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -23,6 +23,8 @@ public class JspFilesFilter implements Filter {
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;
 
+		/*Filters direct access to the jsp files*/
+		
 		if(servletRequest.getSession().getAttribute("username")!=null&&servletRequest.getSession().getAttribute("accessLevel").equals("admin"))
 		{
 			if(servletRequest.getRequestURI().equals(servletRequest.getContextPath()+"/Users.jsp"))

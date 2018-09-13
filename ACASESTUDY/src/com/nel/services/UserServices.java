@@ -1,9 +1,9 @@
-package services;
+package com.nel.services;
 
 import java.util.ArrayList;
 
-import dao.UserDAO;
-import models.User;
+import com.nel.dao.UserDAO;
+import com.nel.models.User;
 
 public class UserServices 
 {
@@ -18,6 +18,7 @@ public class UserServices
 		user.setLastname(lastname);
 		user.setUserid(userId);
 		user.setRole(role);
+		
 		if(role.equalsIgnoreCase("admin"))
 		{
 			user.setCanCreate(true);
@@ -26,6 +27,7 @@ public class UserServices
 		}
 		else 
 		{
+			//check checkboxes value
 			if(create!=null)
 				user.setCanCreate(true);
 			if(update!=null)

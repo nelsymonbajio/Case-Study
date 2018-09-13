@@ -1,4 +1,4 @@
-package controllers;
+package com.nel.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import services.UserServices;
+import com.nel.services.UserServices;
 
 public class ProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -18,13 +18,16 @@ public class ProfileController extends HttpServlet {
 		super();
 	}
 	/** URL REQUEST MAPPING IN PROFILE SERVLET */  
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		//Retrieve profile info
 		if(request.getRequestURI().equals(request.getContextPath()+"/Profile/"))
 		{
 			request.setAttribute("userInfo", userServ.getUserInfo(request.getSession().getAttribute("username").toString()));
 			request.getRequestDispatcher("/Profile.jsp").forward(request, response);
 		}
+		//Redirect to update profile form
 		else if(request.getRequestURI().equals(request.getContextPath()+"/Profile/UpdateProfile"))
 		{
 			request.setAttribute("userInfo", userServ.getUserInfo(request.getSession().getAttribute("username").toString()));
@@ -35,6 +38,7 @@ public class ProfileController extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		//Update Profile request
 		if(request.getRequestURI().equals(request.getContextPath()+"/Profile/Updated"))
 		{
 			String id = request.getParameter("id");
@@ -53,6 +57,7 @@ public class ProfileController extends HttpServlet {
 				role="User";
 			
 			if(userServ.updateUser(id,userid,username,firstname,middlename,lastname,role,create,update,delete)) {
+				
 				//lowercase the first letter of role for session
 				role = Character.toLowerCase(role.charAt(0)) + role.substring(1);
 				request.getSession().setAttribute("username", username);
@@ -61,10 +66,9 @@ public class ProfileController extends HttpServlet {
 				
 			}else {
 				alertMessage("Update Failed",response,request.getContextPath()+"/Profile/UpdateProfile");
-//				System.out.println("Update error");
-//				response.sendRedirect(request.getContextPath()+"/Profile/");
 			}
 		}
+		//Update Profile Password
 		else if(request.getRequestURI().equals(request.getContextPath()+"/Profile/ChangePassword"))
 		{
 			String userid= request.getParameter("userID");

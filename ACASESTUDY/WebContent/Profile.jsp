@@ -26,41 +26,41 @@
 				<br>
 			</div>
 			<div class="col-75">
-				<input type="text" name="userid" value="${userInfo[0].userid}" disabled>
+				<input type="text" name="userid" value="${userInfo[0].userid}" disabled/>
 			</div>
 			<div class="col-25">
 				<label for="username">USERNAME</label>
 			</div>
 			<div class="col-75">
-				<input type="text" name="username" value="${userInfo[0].username}" disabled>
+				<input type="text" name="username" value="${userInfo[0].username}" disabled/>
 			</div>
 			<div class="col-25">
 				<label>NAME</label>
 			</div>
 			<div class="col-75">
-				<input type="text" value="${userInfo[0].firstname} ${userInfo[0].middlename} ${userInfo[0].lastname}" disabled>
+				<input type="text" value="${userInfo[0].firstname} ${userInfo[0].middlename} ${userInfo[0].lastname}" disabled/>
 			</div>
 			<div class="col-25">
 				<label>ROLE</label>
 			</div>
 			<div class="col-75">
-				<input type="text" value="${userInfo[0].role}" disabled>
+				<input type="text" value="${userInfo[0].role}" disabled/>
 			</div>
 			<div class="col-25">
 				<label>PRIVILEGES</label>
 			</div>
 			<div class="col-75">
 				<c:if test="${userInfo[0].canCreate==true}">
-					<input type="text" value="Create" disabled>
+					<input type="text" value="Create" disabled/>
 				</c:if>
 				<c:if test="${userInfo[0].canUpdate==true}">
-					<input type="text" value="Update" disabled>
+					<input type="text" value="Update" disabled/>
 				</c:if>
 				<c:if test="${userInfo[0].canDelete==true}">
-					<input type="text" value="Delete" disabled>
+					<input type="text" value="Delete" disabled/>
 				</c:if>
 				<c:if test="${userInfo[0].canCreate==false && userInfo[0].canUpdate==false && userInfo[0].canDelete==false}">
-					<input type="text" value="No Privilege" disabled>
+					<input type="text" value="No Privilege" disabled/>
 				</c:if>
 			</div>
 			<div class="col-90">

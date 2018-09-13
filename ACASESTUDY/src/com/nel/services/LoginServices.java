@@ -1,6 +1,6 @@
-package services;
+package com.nel.services;
 
-import dao.LoginDAO;
+import com.nel.dao.LoginDAO;
 
 public class LoginServices 
 {
@@ -12,9 +12,9 @@ public class LoginServices
 		LoginDAO logDAO = new LoginDAO();
 		logDAO.searchUser(username,password);
 		
+		//check if user exists and role
 		isAdmin = logDAO.isAdmin();
 		userExists = logDAO.isUserExists();
-		
 	}
 	
 	public boolean isAdmin() {

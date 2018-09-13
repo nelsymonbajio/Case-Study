@@ -13,7 +13,7 @@
     <description></description>
     <display-name>LoginController</display-name>
     <servlet-name>LoginController</servlet-name>
-    <servlet-class>controllers.LoginController</servlet-class>
+    <servlet-class>com.nel.controllers.LoginController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginController</servlet-name>
@@ -23,7 +23,7 @@
     <description></description>
     <display-name>UserController</display-name>
     <servlet-name>UserController</servlet-name>
-    <servlet-class>controllers.UserController</servlet-class>
+    <servlet-class>com.nel.controllers.UserController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserController</servlet-name>
@@ -32,7 +32,7 @@
   <filter>
     <display-name>JspFilesFilter</display-name>
     <filter-name>JspFilesFilter</filter-name>
-    <filter-class>filters.JspFilesFilter</filter-class>
+    <filter-class>com.nel.filters.JspFilesFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>JspFilesFilter</filter-name>
@@ -42,7 +42,7 @@
     <description></description>
     <display-name>ProductController</display-name>
     <servlet-name>ProductController</servlet-name>
-    <servlet-class>controllers.ProductController</servlet-class>
+    <servlet-class>com.nel.controllers.ProductController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ProductController</servlet-name>
@@ -51,7 +51,7 @@
   <filter>
     <display-name>ProductsRequestFilter</display-name>
     <filter-name>ProductsRequestFilter</filter-name>
-    <filter-class>filters.ProductsRequestFilter</filter-class>
+    <filter-class>com.nel.filters.ProductsRequestFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>ProductsRequestFilter</filter-name>
@@ -60,7 +60,7 @@
   <filter>
     <display-name>UsersRequestFilter</display-name>
     <filter-name>UsersRequestFilter</filter-name>
-    <filter-class>filters.UsersRequestFilter</filter-class>
+    <filter-class>com.nel.filters.UsersRequestFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>UsersRequestFilter</filter-name>
@@ -70,7 +70,7 @@
     <description></description>
     <display-name>ProfileController</display-name>
     <servlet-name>ProfileController</servlet-name>
-    <servlet-class>controllers.ProfileController</servlet-class>
+    <servlet-class>com.nel.controllers.ProfileController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ProfileController</servlet-name>
@@ -79,7 +79,7 @@
   <filter>
     <display-name>ProfileRequestFilter</display-name>
     <filter-name>ProfileRequestFilter</filter-name>
-    <filter-class>filters.ProfileRequestFilter</filter-class>
+    <filter-class>com.nel.filters.ProfileRequestFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>ProfileRequestFilter</filter-name>

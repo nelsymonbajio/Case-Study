@@ -1,12 +1,14 @@
-package controllers;
+package com.nel.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import services.ProductServices;
+import com.nel.services.ProductServices;
 
 public class ProductController extends HttpServlet {
 
@@ -16,6 +18,7 @@ public class ProductController extends HttpServlet {
 		super();
 	}
 	/** URL REQUEST MAPPING IN PRODUCT SERVLET */  
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 
@@ -38,7 +41,7 @@ public class ProductController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/Products/");
 			}
 			else {
-				System.out.println("Failed");
+				alertMessage("Delete Product Failed",response,request.getContextPath()+"/Products/");
 			}
 		}
 		//UPDATE FORM
@@ -50,7 +53,7 @@ public class ProductController extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		//Insert PRODUCT
+		//INSERT NEW PRODUCT
 		if(request.getRequestURI().equals(request.getContextPath()+"/Products/AddProduct"))
 		{
 			String prodname = request.getParameter("prodname");
@@ -60,10 +63,12 @@ public class ProductController extends HttpServlet {
 			String prodType = request.getParameter("productType");
 			String expDate = request.getParameter("expiryDate");
 			
-			if(prodServ.addProduct(prodname, prodcode, prodType, qty, price, expDate)) {
+			if(prodServ.addProduct(prodname, prodcode, prodType, qty, price, expDate)) 
+			{
 				response.sendRedirect(request.getContextPath()+"/Products/");
-			}else {
-				System.out.println("Failed");
+			}
+			else {
+				alertMessage("Add Product Failed",response,request.getContextPath()+"/Products/AddProductForm");
 			}
 		}
 		//UPDATE PRODUCT
@@ -77,12 +82,23 @@ public class ProductController extends HttpServlet {
 			String prodType = request.getParameter("productType");
 			String expDate = request.getParameter("expiryDate");
 
-			if(prodServ.updateProduct(id,prodname, prodcode, prodType, qty, price, expDate)) {
+			if(prodServ.updateProduct(id,prodname, prodcode, prodType, qty, price, expDate)) 
+			{
 				response.sendRedirect(request.getContextPath()+"/Products/");
-			}else {
-				System.out.println("Failed");
+			}
+			else {
+				alertMessage("Update Product Failed",response,request.getContextPath()+"/Products/");
 			}
 		}
+	}
+	public void alertMessage(String message,HttpServletResponse response,String location) throws IOException
+	{
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('"+message+"');");
+		out.println("location='"+location+"';");
+		out.println("</script>");
 	}
 }
 

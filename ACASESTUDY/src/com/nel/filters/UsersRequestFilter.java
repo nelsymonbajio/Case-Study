@@ -1,4 +1,4 @@
-package filters;
+package com.nel.filters;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -15,7 +15,9 @@ public class UsersRequestFilter implements Filter {
     }
 	public void destroy() {
 	}
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException 
+	{
+		/*Filters requests in Users module */
 		
 		HttpServletRequest servletRequest = (HttpServletRequest) request;
 		HttpServletResponse servletResponse = (HttpServletResponse) response;

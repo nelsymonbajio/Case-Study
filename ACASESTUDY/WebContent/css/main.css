@@ -47,6 +47,7 @@ ul li a {
 table {
 	border-collapse: collapse;
 	width: 100%;
+	table-layout: fixed;
 }
 
 table th {
@@ -59,6 +60,7 @@ table th {
 table td {
 	border: 1px solid #e3e3e3;
 	padding: 4px 8px;
+	overflow: hidden;
 }
 
 table tr:nth-child(odd) td {
@@ -126,7 +128,7 @@ table tr:nth-child(odd) td {
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.form1 {
+.form {
 	margin-bottom: 1rem;
 }
 

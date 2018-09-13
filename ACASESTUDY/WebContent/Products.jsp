@@ -36,6 +36,7 @@
 		<br>
 		<div class="product-tbl">
 			<table id="productTable" class="display">
+			  <col width="45">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -73,7 +74,7 @@
 									class="btn-update">UPDATE</a></td>
 							</c:when>
 							<c:otherwise>
-								<td></td>
+								<td>-</td>
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
@@ -82,7 +83,7 @@
 									class="btn-delete" onclick="return confirm('Are you sure?')">DELETE</a></td>
 							</c:when>
 							<c:otherwise>
-								<td></td>
+								<td>-</td>
 							</c:otherwise>
 						</c:choose>
 
@@ -92,6 +93,7 @@
 			</table>
 		</div>
 	</div>
+	<br><br><br><br><br>
 <script src="${pageContext.request.contextPath}/js/tableSearch.js"></script>
 </body>
 </html>

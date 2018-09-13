@@ -1,4 +1,4 @@
-package controllers;
+package com.nel.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import services.LoginServices;
-import services.UserServices;
+import com.nel.services.LoginServices;
+import com.nel.services.UserServices;
 
 public class LoginController extends HttpServlet {
 
@@ -22,6 +22,7 @@ public class LoginController extends HttpServlet {
 		super();
 	}
 	/** URL REQUEST MAPPING IN LOGIN SERVLET */  
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		//Logout Request
@@ -44,7 +45,7 @@ public class LoginController extends HttpServlet {
 			{
 				session.setAttribute("username", request.getParameter("username"));
 				session.setAttribute("accessLevel", "admin");
-				//set privileges
+				//set privileges of session
 				session.setAttribute("createPriv", true);
 				session.setAttribute("updatePriv", true);
 				session.setAttribute("deletePriv", true);
@@ -54,7 +55,7 @@ public class LoginController extends HttpServlet {
 			{
 				session.setAttribute("username", request.getParameter("username"));
 				session.setAttribute("accessLevel", "user");
-				//set privileges
+				//set privileges of session
 				session.setAttribute("createPriv", userServ.getUserInfo(request.getParameter("username")).get(0).isCanCreate());
 				session.setAttribute("updatePriv", userServ.getUserInfo(request.getParameter("username")).get(0).isCanUpdate());
 				session.setAttribute("deletePriv", userServ.getUserInfo(request.getParameter("username")).get(0).isCanDelete());

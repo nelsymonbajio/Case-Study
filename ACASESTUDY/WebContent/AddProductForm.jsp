@@ -17,25 +17,25 @@
 					<label for=prodcode>Product Code</label>
 				</div>
 				<div class="col-75">
-					<input type="text" class="align-form" name="prodcode" required placeholder="Type Product Code" pattern="^[a-zA-Z0-9]*$" maxlength="20">
+					<input type="text" class="align-form" name="prodcode" required placeholder="Type Product Code" pattern="^[a-zA-Z0-9]*$" maxlength="20"/>
 				</div>
 				<div class="col-25">
 					<label for="prodname">Product Name</label>
 				</div>
 				<div class="col-75">
-					<input type="text" class="align-form" name="prodname" required placeholder="Type Product Name" pattern="^[a-zA-Z 0-9]*$" maxlength="30">
+					<input type="text" class="align-form" name="prodname" required placeholder="Type Product Name" pattern="^[a-zA-Z 0-9]*$" maxlength="30"/>
 				</div>
 				<div class="col-25">
 					<label for="quantity">Quantity</label>
 				</div>
 				<div class="col-75">
-					<input type="number" class="align-form" name="quantity" required placeholder="Type Quantity" maxlength="11">
+					<input type="number" class="align-form" name="quantity" required placeholder="Type Quantity" maxlength="11"/>
 				</div>
 				<div class="col-25">
 					<label for="price">Price</label>
 				</div>
 				<div class="col-75">
-					<input type="number" class="align-form" name="price" required placeholder="Type Price" step=".01">
+					<input type="number" class="align-form" name="price" required placeholder="Type Price" step=".01"/>
 				</div>
 				<div class="col-25">
 					<label>Product Type</label>
@@ -51,16 +51,16 @@
 						<label>Expiration Date</label>
 					</div>
 					<div class="col-75">
-						<input type="date" name="expiryDate" id="dateId" required>
+						<input type="date" name="expiryDate" id="dateId" required/>
 					</div>
 				</div>
 				<div class="col-80">
 				</div>
 				<div class="col-10">
-					<input class="btn-update" type="submit" name="AddProduct" value="SUBMIT">
+					<input class="btn-update" type="submit" name="AddProduct" value="SUBMIT"/>
 				</div>
 				<div class="col-10">
-					<a href="${pageContext.request.contextPath}/Products/" class="btn-delete" style="height:14px !important;">CANCEL</a>
+					<a href="${pageContext.request.contextPath}/Products/" class="btn-delete">CANCEL</a>
 				</div>
 			
 		</form>

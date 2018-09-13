@@ -1,4 +1,4 @@
-package dao;
+package com.nel.dao;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

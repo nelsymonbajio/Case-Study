@@ -1,4 +1,4 @@
-package models;
+package com.nel.models;
 
 public class User {
 
