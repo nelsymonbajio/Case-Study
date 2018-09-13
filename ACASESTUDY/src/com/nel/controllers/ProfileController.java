@@ -65,7 +65,7 @@ public class ProfileController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/Profile/");
 				
 			}else {
-				alertMessage("Update Failed",response,request.getContextPath()+"/Profile/UpdateProfile");
+				alertMessage("Update Failed try different userid or username",response,request.getContextPath()+"/Profile/UpdateProfile");
 			}
 		}
 		//Update Profile Password

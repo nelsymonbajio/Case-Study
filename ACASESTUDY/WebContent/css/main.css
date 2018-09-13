@@ -1,5 +1,9 @@
 @charset "ISO-8859-1";
-
+html, body {
+	margin:0;
+	padding:0;
+	height:100%
+}
 body {
 	margin: 0px;
 	padding: 0px;
@@ -17,7 +21,7 @@ nav {
 }
 
 ul {
-	list-style-type: none;
+	list-style-type: none;	
 	width: 80%;
 	margin: 0 auto;
 	padding: 0;
@@ -151,4 +155,17 @@ table tr:nth-child(odd) td {
 	color: #FFF;
 	padding: 4px 30px 4px 8px;
 }
-
+.welcome{
+	position:relative;
+	min-height:100%;
+}
+.abs{
+	width:300px;
+	height:500px;
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	margin:auto;
+}

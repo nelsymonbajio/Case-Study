@@ -9,6 +9,10 @@
 	</head>
 <body>
 	<jsp:include page="userHeader.jsp" />
-	<h1 align="center">WELCOME USER</h1>
+	<div class="welcome">
+	  	<div class="abs">
+	  		<h1>WELCOME USER</h1>
+	  	</div>
+	</div>
 </body>
 </html>

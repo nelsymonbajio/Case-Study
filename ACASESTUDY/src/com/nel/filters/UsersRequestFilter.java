@@ -30,6 +30,9 @@ public class UsersRequestFilter implements Filter {
 		{
 			servletResponse.sendRedirect(servletRequest.getContextPath()+"/UserMain.jsp");
 		}
+		else {
+			servletResponse.sendRedirect(servletRequest.getContextPath()+"/Login.jsp");
+		}
 	}
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
