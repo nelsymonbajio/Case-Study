@@ -27,6 +27,7 @@
 			<div>
 				<h2>PRODUCTS</h2>
 			</div>
+			<a href="export.jsp"></a>
 			<c:if test="${sessionScope.createPriv==true}">
 				<a href="AddProductForm" class="btn-add" style="float: right;">ADD PRODUCT</a>
 				<br>

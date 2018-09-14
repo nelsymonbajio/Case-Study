@@ -111,6 +111,7 @@
 					</c:choose>
 				</div>
 				<div class="col-50">
+					<input type="hidden" name="u" value="${userInfo[0].username}">
 					<input class="btn-update" type="submit" name="UpdateUser" value="UPDATE" onclick="return confirm('Are you sure?')" style="width:170px !important;"/>
 				</div>		
 				<div class="col-50">

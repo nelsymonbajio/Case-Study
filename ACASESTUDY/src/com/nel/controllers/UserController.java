@@ -42,8 +42,16 @@ public class UserController extends HttpServlet {
 		//Redirect to Update User Form Page
 		else if(request.getRequestURI().equals(request.getContextPath()+"/Users/UpdateUserForm"))
 		{
-			request.setAttribute("userInfo", userServ.getUserInfo(request.getParameter("u")));
-			request.getRequestDispatcher("/UpdateUserForm.jsp").forward(request, response);
+			//updating self from the users table will redirect to profile page
+			if(request.getParameter("u").equals(request.getSession().getAttribute("username")))
+			{
+				response.sendRedirect(request.getContextPath()+"/Profile/");
+			}
+			else {
+				request.setAttribute("userInfo", userServ.getUserInfo(request.getParameter("u")));
+				request.getRequestDispatcher("/UpdateUserForm.jsp").forward(request, response);
+			}
+			
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -91,6 +99,7 @@ public class UserController extends HttpServlet {
 		//UPDATE USER REQUEST
 		else if(request.getRequestURI().equals(request.getContextPath()+"/Users/UpdateUser"))
 		{
+			String u = request.getParameter("u");
 			String id = request.getParameter("id");
 			String userid = request.getParameter("userid");
 			String username = request.getParameter("username");
@@ -109,7 +118,7 @@ public class UserController extends HttpServlet {
 //				System.out.println("Update Failed");
 //				System.out.println("Try again");
 //				response.sendRedirect(request.getContextPath()+"/Users/");
-				alertMessage("Update Failed try different userid or username",response,request.getContextPath()+"/Users/");
+				alertMessage("Update Failed try different userid or username",response,request.getContextPath()+"/Users/UpdateUserForm?u="+u);
 				
 			}
 		}

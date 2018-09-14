@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.nel.services.UserServices;
 
 public class ProfileController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
 	private UserServices userServ = new UserServices();
 	public ProfileController() {
