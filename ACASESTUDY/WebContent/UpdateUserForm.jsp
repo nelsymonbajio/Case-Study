@@ -118,8 +118,8 @@
 				</div>		
 			</form>
 		</div>
-		<div class="register right">
 		
+		<div class="register right">
 			<h1 align="center">Change Password</h1>
 			<br>
 			<form action="UserChangePass" method="POST" name="changePassForm" onsubmit="return validateChangepass()">
@@ -153,6 +153,7 @@
 				<input type="submit" value="RESET ACCOUNT" class="btn-delete" style="width:170px !important;"/>
 			</form>
 		</div>
+		
 	</div>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/UpdateUser.js"></script>
 </body>

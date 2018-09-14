@@ -16,7 +16,6 @@ public class LoginServices
 		isAdmin = logDAO.isAdmin();
 		userExists = logDAO.isUserExists();
 	}
-	
 	public boolean isAdmin() {
 		return isAdmin;
 	}
