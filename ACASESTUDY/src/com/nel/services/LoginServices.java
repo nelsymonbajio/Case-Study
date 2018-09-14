@@ -12,7 +12,7 @@ public class LoginServices
 		LoginDAO logDAO = new LoginDAO();
 		logDAO.searchUser(username,password);
 		
-		//check if user exists and role
+		//check if user exists and check role
 		isAdmin = logDAO.isAdmin();
 		userExists = logDAO.isUserExists();
 	}

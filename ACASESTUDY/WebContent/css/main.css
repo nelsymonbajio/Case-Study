@@ -86,7 +86,7 @@ table tr:nth-child(odd) td {
 	border-bottom: 1px solid #333333;
 	border-left: 1px solid #CCCCCC;
 	text-align: center;
-	padding: 12px;
+	padding: 10px;
 }
 
 .btn-add {
@@ -95,7 +95,7 @@ table tr:nth-child(odd) td {
 	border-color: #ffc107;
 	display: block;
 	text-decoration: none;
-	padding: 12px;
+	padding: 10px;
 	border-top: 1px solid #CCCCCC;
 	border-right: 1px solid #333333;
 	border-bottom: 1px solid #333333;
@@ -110,7 +110,7 @@ table tr:nth-child(odd) td {
 	border-color: #dc3545;
 	display: block;
 	text-decoration: none;
-	padding: 12px;
+	padding: 10px;
 	border-top: 1px solid #CCCCCC;
 	border-right: 1px solid #333333;
 	border-bottom: 1px solid #333333;

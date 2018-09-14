@@ -13,7 +13,7 @@ public class UserDAO extends DbConnection
 	private Statement stmt;
 	private ResultSet rs;
 	private PreparedStatement ps;
-	
+
 	public boolean createUser(User user)
 	{
 		con = this.getConnection();
@@ -31,14 +31,24 @@ public class UserDAO extends DbConnection
 			ps.setInt(8, user.isCanCreate()? 1 : 0);
 			ps.setInt(9, user.isCanDelete()? 1 : 0);
 			ps.setInt(10, user.isCanUpdate()? 1 : 0);
-			
+
 			ps.executeUpdate();
-			ps.close();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(rs!=null);
+					rs.close();
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					this.closeConnection(con);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}
@@ -50,20 +60,28 @@ public class UserDAO extends DbConnection
 			ps=con.prepareStatement(query);
 			ps.setString(1, username);
 			ps.executeUpdate();
-			ps.close();
-			
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					this.closeConnection(con);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}
 	public ArrayList<User> getSpecificUser(String username)
 	{
 		con = this.getConnection();
-		
+
 		ArrayList<User> user = new ArrayList<User>();
 		String query = "SELECT * FROM users WHERE username=?";
 		try {
@@ -85,12 +103,21 @@ public class UserDAO extends DbConnection
 				user1.setCanDelete(rs.getBoolean("deletePriv"));
 				user.add(user1);
 			}
-			rs.close();
-			ps.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(con!=null)
+					this.closeConnection(con);
+				if(rs!=null);
+				rs.close();
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return user;
 	}
@@ -114,7 +141,6 @@ public class UserDAO extends DbConnection
 				d=1;
 		}
 
-
 		String query="UPDATE users SET userid= ? , username= ?, firstname=?, middlename= ?, "
 				+ "lastname= ?,role= ?,createPriv= ?, updatePriv= ?, deletePriv= ? WHERE id= ?";
 		try {
@@ -130,24 +156,32 @@ public class UserDAO extends DbConnection
 			ps.setInt(9, d);
 			ps.setString(10, id);
 			ps.executeUpdate();
-			
-			ps.close();
-			
+
 			return true;
+
 		}catch(SQLIntegrityConstraintViolationException f) {
 			return false;
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					this.closeConnection(con);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}
 	public boolean changePassword(String userid,String oldpass, String newpass)
 	{
 		con = this.getConnection();
-		
+
 		String query1 = "SELECT * FROM users WHERE userid= ? and password = ?";
 		String query2 = "UPDATE users SET password='"+encryptData(newpass)+"' WHERE userid="+userid+"";
 
@@ -160,17 +194,25 @@ public class UserDAO extends DbConnection
 			{
 				stmt=con.createStatement();
 				stmt.executeUpdate(query2);
-				stmt.close();
-				ps.close();
-				rs.close();
 				return true;
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		try {
+			if(stmt!=null)
+				stmt.close();
+			if(rs!=null);
+			rs.close();
+			if(ps!=null)
+				ps.close();
+			if(con!=null)
+				this.closeConnection(con);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -187,12 +229,19 @@ public class UserDAO extends DbConnection
 			{
 				return true;
 			}
-			ps.close();
-			rs.close();
 		}catch(SQLException e){
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		try {
+			if(rs!=null);
+			rs.close();
+			if(ps!=null)
+				ps.close();
+			if(con!=null)
+				this.closeConnection(con);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -220,12 +269,19 @@ public class UserDAO extends DbConnection
 				user.setCanDelete(rs.getBoolean("deletePriv"));
 				users.add(user);
 			}
-			rs.close();
-			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		try {
+			if(rs!=null);
+			rs.close();
+			if(ps!=null)
+				ps.close();
+			if(con!=null)
+				this.closeConnection(con);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return users;
 
@@ -238,11 +294,17 @@ public class UserDAO extends DbConnection
 			ps = con.prepareStatement(query);
 			ps.setString(1, userid);
 			ps.executeUpdate();
-			ps.close();
 		}catch(SQLException e){
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		try {
+			if(ps!=null)
+				ps.close();
+			if(con!=null)
+				this.closeConnection(con);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	public String encryptData(String data)

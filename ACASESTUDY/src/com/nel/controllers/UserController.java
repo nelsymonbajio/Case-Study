@@ -15,9 +15,9 @@ public class UserController extends HttpServlet {
 		super();
 	}
 	private UserServices userServ = new UserServices();
-	
+
 	/** URL REQUEST MAPPING IN USER SERVLET */  
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		//Retrieve All Users
@@ -51,7 +51,7 @@ public class UserController extends HttpServlet {
 				request.setAttribute("userInfo", userServ.getUserInfo(request.getParameter("u")));
 				request.getRequestDispatcher("/UpdateUserForm.jsp").forward(request, response);
 			}
-			
+
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
@@ -110,16 +110,16 @@ public class UserController extends HttpServlet {
 			String create = request.getParameter("Create");
 			String update = request.getParameter("Update");
 			String delete = request.getParameter("Delete");
-			
+
 			if(userServ.updateUser(id,userid,username,firstname,middlename,lastname,role,create,update,delete)) {
 				//System.out.println("Success");
 				response.sendRedirect(request.getContextPath()+"/Users/");
 			}else {
-//				System.out.println("Update Failed");
-//				System.out.println("Try again");
-//				response.sendRedirect(request.getContextPath()+"/Users/");
+				//				System.out.println("Update Failed");
+				//				System.out.println("Try again");
+				//				response.sendRedirect(request.getContextPath()+"/Users/");
 				alertMessage("Update Failed try different userid or username",response,request.getContextPath()+"/Users/UpdateUserForm?u="+u);
-				
+
 			}
 		}
 		//RESET USER PASSWORD

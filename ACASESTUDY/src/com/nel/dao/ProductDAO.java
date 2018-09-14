@@ -31,14 +31,22 @@ public class ProductDAO extends DbConnection{
 			ps.setInt(4, qty);
 			ps.setDouble(5, price);
 			ps.setString(6, expdate);
-			
 			ps.executeUpdate();
-			ps.close();
+			
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					this.closeConnection(con);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}
@@ -63,12 +71,21 @@ public class ProductDAO extends DbConnection{
 				prod1.setExpiryDate(rs.getDate("expiryDate"));
 				prod.add(prod1);
 			}
-			rs.close();
-			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(rs!=null);
+					rs.close();
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					this.closeConnection(con);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return prod;
 	}
@@ -95,12 +112,21 @@ public class ProductDAO extends DbConnection{
 				prod.setExpiryDate(rs.getDate("expiryDate"));
 				prods.add(prod);
 			}
-			ps.close();
-			rs.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(rs!=null);
+					rs.close();
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					this.closeConnection(con);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return prods;
 	}
@@ -113,12 +139,20 @@ public class ProductDAO extends DbConnection{
 			ps=con.prepareStatement(query);
 			ps.setString(1, id);
 			ps.executeUpdate();
-			ps.close();
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					this.closeConnection(con);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}
@@ -138,12 +172,21 @@ public class ProductDAO extends DbConnection{
 			ps.setString(6, expDate);
 			ps.setString(7, id);
 			ps.executeUpdate();
-			ps.close();
+			
 			return true;
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					this.closeConnection(con);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return false;
 	}

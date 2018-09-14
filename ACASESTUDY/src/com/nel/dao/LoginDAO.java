@@ -12,20 +12,20 @@ public class LoginDAO extends DbConnection
 	private ResultSet rs;
 	private boolean isAdmin = false;
 	private boolean userExists = false;
-	
+
 	public void searchUser(String username, String password)
 	{
 		con = this.getConnection();
-		
+
 		String query="SELECT * FROM users WHERE username = ? AND password = ?";
-		
+
 		try {
-			
+
 			ps = con.prepareStatement(query);
 			ps.setString(1, username);
 			ps.setString(2,encryptData(password));
 			rs = ps.executeQuery();
-			
+
 			while(rs.next())
 			{
 				setUserExists(true);
@@ -35,12 +35,22 @@ public class LoginDAO extends DbConnection
 				}
 			}
 			rs.close();
-			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
-			this.closeConnection(con);
+		}
+		finally
+		{
+			try {
+				if(rs!=null);
+					rs.close();
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					this.closeConnection(con);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
