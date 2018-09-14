@@ -12,7 +12,7 @@
 	
 		<h1 align="center">REGISTRATION</h1>
 		
-		<form action="Users/RegisterUser" method="POST">
+		<form action="Users/RegisterUser" method="POST" name="addUserForm" onsubmit="return validateUserForm()">
 			<div class="form">
 				<label for="userid">User ID</label>
 				<input type="number" class="align-form" name="userid" required placeholder="Type Userid" maxlength="11"/>

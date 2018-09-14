@@ -15,7 +15,7 @@
 				<h1 align="center">Update Information</h1>
 				<br>
 			</div>
-			<form action="UpdateUser" method="POST">
+			<form action="UpdateUser" method="POST" name="updateUserForm" onsubmit="return validateUpdateUserForm()">
 				<input type="hidden" name="id" value="${userInfo[0].id}"/>
 				<div class="form">
 					<label for="userid">User ID</label>

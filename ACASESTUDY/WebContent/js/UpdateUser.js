@@ -1,8 +1,39 @@
+function validateUserForm()
+{
+	var f = document.forms["addUserForm"]["firstname"].value;
+	var m = document.forms["addUserForm"]["middlename"].value;
+	var l = document.forms["addUserForm"]["lastname"].value;
+	
+	if(f == ' ' || f == '' || m == ' ' || m == '' || l == ' ' || l == '')
+	{
+		alert("Fill out the form");
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+function validateUpdateUserForm()
+{
+	var f = document.forms["updateUserForm"]["firstname"].value;
+	var m = document.forms["updateUserForm"]["middlename"].value;
+	var l = document.forms["updateUserForm"]["lastname"].value;
+	
+	if(f == ' ' || f == '' || m == ' ' || m == '' || l == ' ' || l == '')
+	{
+		alert("Fill out the form");
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
 function validateChangepass()
 {
 	var x = document.forms["changePassForm"]["newpass"].value;
 	var y = document.forms["changePassForm"]["confirmpass"].value;
-	
+
 	if(x==y)
 	{
 		return true;
